@@ -8,22 +8,30 @@
 // source 仅用于作者审阅；日常新增不等于正篇事实，未定日期不伪装为精确时间。
 const CONFIG = {
   "assets": {
-    "wallpaper": "",
-    "lockWallpaper": "",
-    "wallpaperPosition": "35% 75%",
-    "lockWallpaperPosition": "35% 75%",
+    "wallpaper": "assets/wallpaper-9126.jpg",
+    "lockWallpaper": "assets/wallpaper-9126.jpg",
+    "wallpaperPosition": "72% 75%",
+    "lockWallpaperPosition": "72% 75%",
     "avatars": {
-      "shin": "",
-      "self": "",
+      "shin": "assets/avatar-shin-9118.jpg",
+      "self": "assets/avatar-self-9123.jpg",
       "mother": "",
       "workmate": "",
       "production": ""
     },
     "avatarPositions": {
-      "shin": "50% 50%",
+      "shin": "50% 15%",
       "self": "50% 50%"
     },
-    "photos": {}
+    "photos": {},
+    "avatarZoom": {
+      "shin": 2.1,
+      "self": 1.65
+    },
+    "avatarOrigins": {
+      "shin": "60% 0%",
+      "self": "65% 20%"
+    }
   },
   "storageKey": "when-the-rain-falls-2033-v1",
   "work": {
@@ -4322,8 +4330,8 @@ const glyphs={
 };
 const svg=type=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${glyphs[type]||glyphs.info}</svg>`;
 function avatar(c){
- const id=c.id||'self',src=CONFIG.assets.avatars[id]||'',position=CONFIG.assets.avatarPositions[id]||'50% 50%';
- return `<span class="avatar" style="background:${/^#[\da-f]{3,8}$/i.test(c.color)?c.color:'#879cb2'}"><span class="avatar-fallback">${esc(c.initials)}</span>${src?`<img src="${esc(src)}" alt="${esc(c.name)}的头像" style="object-position:${esc(position)}" loading="lazy">`:''}</span>`;
+ const id=c.id||'self',src=CONFIG.assets.avatars[id]||'',position=CONFIG.assets.avatarPositions[id]||'50% 50%',zoom=Math.max(1,Math.min(4,Number(CONFIG.assets.avatarZoom?.[id])||1)),origin=CONFIG.assets.avatarOrigins?.[id]||'50% 50%';
+ return `<span class="avatar" style="background:${/^#[\da-f]{3,8}$/i.test(c.color)?c.color:'#879cb2'}"><span class="avatar-fallback">${esc(c.initials)}</span>${src?`<img src="${esc(src)}" alt="${esc(c.name)}的头像" style="object-position:${esc(position)};transform:scale(${zoom});transform-origin:${esc(origin)}" loading="lazy">`:''}</span>`;
 }
 document.addEventListener('error',e=>{if(e.target instanceof HTMLImageElement&&e.target.closest('.avatar'))e.target.hidden=true},true);
 const selfContact=()=>({...CONFIG.owner,id:'self',color:'#a2a1b5'});
