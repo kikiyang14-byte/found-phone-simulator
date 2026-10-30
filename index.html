@@ -1,0 +1,4119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>大雨落下时 · 捡手机剧情模拟器</title>
+<script>
+// 编辑入口：所有人物、剧情与线索均从 CONFIG 读取。id 稳定且唯一。
+// source 仅用于作者审阅；日常新增不等于正篇事实，未定日期不伪装为精确时间。
+const CONFIG = {
+  "storageKey": "when-the-rain-falls-2033-v1",
+  "work": {
+    "title": "大雨落下时",
+    "displayTitle": "大雨\n落下时",
+    "eyebrow": "FOUND PHONE / 001",
+    "intro": "一部被遗落的手机。\n一些尚未说完的话。",
+    "invitation": "从一条消息、一张照片开始。\n由你决定先打开哪里。",
+    "edition": "EP11 当晚 · 手机内容切片",
+    "snapshot": "2033-06-06T23:10:00+09:00",
+    "firstDay": "2033-06-02",
+    "timeNote": "D1—D5 对应作者确认的2033年6月2日—6月6日，不显示与正文冲突的公历星期。手机23:10及消息分钟为游戏编排。申惟旧聊天按用户160条原文导入，以2026.10交往、2029年冬家庭变动、2031.12分手为日期锚点；具体月日为编排，原稿夏季回国与12月分手的日期张力保存在chat-shin.source中，不声称已核实。",
+    "provenanceNote": "source仅供作者核对。用户提供的私人对白与正篇引文分别标记；恢复聊天不代表正篇新增恢复操作。未送达的分手后短信不补入。"
+  },
+  "owner": {
+    "name": "李炅潣",
+    "initials": "潣",
+    "signature": "2033年6月 · 入住第5日"
+  },
+  "device": {
+    "carrier": "KOR",
+    "time": "23:10",
+    "date": "2033年6月6日 · D5",
+    "battery": "76%",
+    "lockHint": "大雨落下时",
+    "wallpaperLabel": "晚风中的山脊"
+  },
+  "contacts": [
+    {
+      "id": "production",
+      "name": "节目组",
+      "initials": "节",
+      "color": "#70877e",
+      "subtitle": "节目短信"
+    },
+    {
+      "id": "workmate",
+      "name": "工作室同事",
+      "initials": "室",
+      "color": "#8b987a",
+      "subtitle": "工作联络"
+    },
+    {
+      "id": "mother",
+      "name": "伯母",
+      "initials": "伯",
+      "color": "#b08a60",
+      "subtitle": "申惟的母亲"
+    },
+    {
+      "id": "shin",
+      "name": "申惟",
+      "initials": "惟",
+      "color": "#62857f",
+      "subtitle": "历史聊天"
+    }
+  ],
+  "chats": [
+    {
+      "id": "chat-program",
+      "listTime": "06-06 · D5",
+      "contactId": "production",
+      "kind": "program",
+      "preview": "看到了吗？我的真心",
+      "notice": "节目组",
+      "footer": "短信历史 · 无法发送新消息",
+      "clueIds": [
+        "sincerity"
+      ],
+      "source": {
+        "kind": "正文＋载体改编",
+        "chapters": "EP1、EP3—EP5、EP8—EP11",
+        "note": "节目组来信、本人回复、匿名心动短信、X选择结果均为独立消息。大海选择与江陵确认来自用户本轮补充；其余原文任务保持原有渠道。精确时刻为游戏编排。"
+      },
+      "messages": [
+        {
+          "id": "program-d1-prompt",
+          "sender": "production",
+          "time": "2033-06-02T21:50:00",
+          "dateLabel": "2033年6月2日 · D1",
+          "text": "欢迎大家入住\n今天令你心动的人是谁？\n用短信表达自己的心意吧\n*短信会以匿名的方式传达给对方",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP1；EP3确认X身份",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d1-send",
+          "sender": "self",
+          "time": "2033-06-02T21:54:00",
+          "dateLabel": "2033年6月2日 · D1",
+          "text": "to 申惟\n希望你能够幸福，还有，谢谢你。",
+          "messageType": "heart-send",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP1；EP3确认X身份",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          },
+          "recipient": "申惟"
+        },
+        {
+          "id": "sms-d1",
+          "sender": "production",
+          "time": "2033-06-02T22:03:00",
+          "dateLabel": "2033年6月2日 · D1",
+          "text": "不要逃避我",
+          "messageType": "heart-received",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP1；EP3确认X身份",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d1-x",
+          "sender": "production",
+          "time": "2033-06-02T22:03:00",
+          "dateLabel": "2033年6月2日 · D1",
+          "text": "你的x选择了你",
+          "messageType": "x-result",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP1；EP3确认X身份",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d2-prompt",
+          "sender": "production",
+          "time": "2033-06-03T21:40:00",
+          "dateLabel": "2033年6月3日 · D2",
+          "text": "今天令你心动的人是谁？\n用短信表达自己的心意吧\n*短信会以匿名的方式传达给对方",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP3—EP4",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d2-send",
+          "sender": "self",
+          "time": "2033-06-03T21:42:00",
+          "dateLabel": "2033年6月3日 · D2",
+          "text": "to 金道勋\n金老师好",
+          "messageType": "heart-send",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP3—EP4",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          },
+          "recipient": "金道勋"
+        },
+        {
+          "id": "program-date-invitation",
+          "sender": "production",
+          "time": "2033-06-03T21:43:00",
+          "dateLabel": "2033年6月3日 · D2",
+          "text": "请以下三位（申惟 韩志薰 金道勋）参演者选择明天的约会对象\n请注意 不可以选x",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP2—EP3",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "sms-d2",
+          "sender": "production",
+          "time": "2033-06-03T23:05:00",
+          "dateLabel": "2033年6月3日 · D2",
+          "text": "我今天去见taro了",
+          "messageType": "heart-received",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP3—EP4",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d2-x",
+          "sender": "production",
+          "time": "2033-06-03T23:05:00",
+          "dateLabel": "2033年6月3日 · D2",
+          "text": "你的x选择了你",
+          "messageType": "x-result",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP3—EP4",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d3-prompt",
+          "sender": "production",
+          "time": "2033-06-04T22:00:00",
+          "dateLabel": "2033年6月4日 · D3",
+          "text": "经过了一天的约会\n今天令你心动的人是谁？\n用短信表达自己的心意吧\n*短信会以匿名的方式传达给对方",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP5",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d3-send",
+          "sender": "self",
+          "time": "2033-06-04T22:02:00",
+          "dateLabel": "2033年6月4日 · D3",
+          "text": "to 韩振\n要不要和我去约会？",
+          "messageType": "heart-send",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP5",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          },
+          "recipient": "韩振"
+        },
+        {
+          "id": "sms-d3",
+          "sender": "production",
+          "time": "2033-06-04T22:13:00",
+          "dateLabel": "2033年6月4日 · D3",
+          "text": "我会学着离你的世界更近的",
+          "messageType": "heart-received",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP5",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d3-x",
+          "sender": "production",
+          "time": "2033-06-04T22:13:00",
+          "dateLabel": "2033年6月4日 · D3",
+          "text": "你的x选择了你",
+          "messageType": "x-result",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP5",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d4-prompt",
+          "sender": "production",
+          "time": "2033-06-05T20:10:00",
+          "dateLabel": "2033年6月5日 · D4",
+          "text": "今天令你心动的人是谁？\n用短信表达自己的心意吧\n*短信会以匿名的方式传达给对方",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP8",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d4-send",
+          "sender": "self",
+          "time": "2033-06-05T20:18:00",
+          "dateLabel": "2033年6月5日 · D4",
+          "text": "to 申惟\n泡菜炒饭，谢谢",
+          "messageType": "heart-send",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP8",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          },
+          "recipient": "申惟"
+        },
+        {
+          "id": "sms-d4",
+          "sender": "production",
+          "time": "2033-06-05T20:40:00",
+          "dateLabel": "2033年6月5日 · D4",
+          "text": "我说，今晚玩游戏的时候，我还会坐你旁边的^^",
+          "messageType": "heart-received",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP8",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d4-x",
+          "sender": "production",
+          "time": "2033-06-05T20:40:00",
+          "dateLabel": "2033年6月5日 · D4",
+          "text": "你的x选择了你",
+          "messageType": "x-result",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP8",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-xroom",
+          "sender": "production",
+          "time": "2033-06-06T10:50:00",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "X-room 开启\n李炅潣请现在前往X-room",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP9",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-theme",
+          "sender": "production",
+          "time": "2033-06-06T14:02:00",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "第一次主题约会即将开始\n请在以下三个词中选择一个：森林、大海、山脉\n明日，选中同一个词语的人将前往同一地点约会\n*词语选择按照先后顺序分配，优先选中同一个词语的两人可以进行该主题的约会，在到达约会地点之前，你们将无法得知约会对象的身份",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP10",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-theme-choice",
+          "sender": "self",
+          "time": "2033-06-06T14:18:00",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "大海",
+          "messageType": "theme-choice",
+          "source": {
+            "kind": "用户确认",
+            "chapters": "EP11主题选择；本轮用户指定补充",
+            "note": "选择及确认文字按用户要求；分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "program-theme-confirm",
+          "sender": "production",
+          "time": "2033-06-06T14:18:30",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "选择成功，请在明天下午一点乘坐黑色车 前往 江陵",
+          "messageType": "theme-confirm",
+          "source": {
+            "kind": "用户确认",
+            "chapters": "EP11主题选择；本轮用户指定补充",
+            "note": "选择及确认文字按用户要求；分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d5-prompt",
+          "sender": "production",
+          "time": "2033-06-06T22:45:00",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "今天令你心动的人是谁？\n用短信表达自己的心意吧\n*短信会以匿名的方式传达给对方",
+          "messageType": "instruction",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP11",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d5-send",
+          "sender": "self",
+          "time": "2033-06-06T22:47:00",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "to 申惟\n我们以后好好相处吧",
+          "messageType": "heart-send",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP11",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          },
+          "recipient": "申惟"
+        },
+        {
+          "id": "sms-d5",
+          "sender": "production",
+          "time": "2033-06-06T22:52:00",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "看到了吗？我的真心",
+          "messageType": "heart-received",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP11",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        },
+        {
+          "id": "program-d5-x",
+          "sender": "production",
+          "time": "2033-06-06T22:52:00",
+          "dateLabel": "2033年6月6日 · D5",
+          "text": "你的x选择了你",
+          "messageType": "x-result",
+          "source": {
+            "kind": "正文",
+            "chapters": "EP11",
+            "note": "送达顺序依据正文；精确时刻为游戏编排。"
+          }
+        }
+      ],
+      "context": ""
+    },
+    {
+      "id": "chat-work",
+      "contactId": "workmate",
+      "source": {
+        "kind": "用户提供的游戏补写",
+        "chapters": "用户本轮C01—C30；工作背景参照EP3、EP4",
+        "note": "对白逐字导入，非小说原文。全部发生于回首尔开录音室之后，最晚消息为录制前；同事不知道节目规则、名单、X身份或感情选择。具体日期为游戏编排。"
+      },
+      "messages": [
+        {
+          "id": "workmate-import-C01",
+          "sequence": 1,
+          "time": "2033-02-16T11:42:00",
+          "sender": "workmate",
+          "text": "你把昨天那个音又重新调了？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C01",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C02",
+          "sequence": 2,
+          "time": "2033-02-16T11:43:00",
+          "sender": "self",
+          "text": "不是“又”。我发现尾音有一点杂声。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C02",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C03",
+          "sequence": 3,
+          "time": "2033-02-16T11:44:00",
+          "sender": "workmate",
+          "text": "我戴耳机听了四遍都没听出来。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C03",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C04",
+          "sequence": 4,
+          "time": "2033-02-16T11:45:00",
+          "sender": "self",
+          "text": "第五遍就能听出来。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C04",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C05",
+          "sequence": 5,
+          "time": "2033-02-16T11:46:00",
+          "sender": "workmate",
+          "text": "你是在跟我比耐力吗？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C05",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C06",
+          "sequence": 6,
+          "time": "2033-02-16T11:47:00",
+          "sender": "self",
+          "text": "没有。我已经听了二十七遍。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C06",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C07",
+          "sequence": 7,
+          "time": "2033-02-16T11:48:00",
+          "sender": "workmate",
+          "text": "那你赢了。修理工，午饭吃什么？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C07",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C08",
+          "sequence": 8,
+          "time": "2033-02-16T11:49:00",
+          "sender": "self",
+          "text": "不要叫我修理工。楼下那家就行。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C08",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C09",
+          "sequence": 9,
+          "time": "2033-02-16T11:50:00",
+          "sender": "workmate",
+          "text": "收到。修理工今天要不要加蛋？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C09",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C10",
+          "sequence": 10,
+          "time": "2033-02-16T11:51:00",
+          "sender": "self",
+          "text": "要。再叫一次，我就让你听第二十八遍。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C10",
+            "stage": "工作室日常",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C11",
+          "sequence": 11,
+          "time": "2033-03-08T16:25:00",
+          "sender": "workmate",
+          "text": "明天下午的录音提前半小时，可以吗？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C11",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C12",
+          "sequence": 12,
+          "time": "2033-03-08T16:26:00",
+          "sender": "self",
+          "text": "可以。我把设备检查也提前。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C12",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C13",
+          "sequence": 13,
+          "time": "2033-03-09T10:04:00",
+          "sender": "workmate",
+          "text": "你昨晚几点走的？我早上来，灯还亮着。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C13",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C14",
+          "sequence": 14,
+          "time": "2033-03-09T10:05:00",
+          "sender": "self",
+          "text": "忘了关。不是一夜没走。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C14",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C15",
+          "sequence": 15,
+          "time": "2033-03-09T10:06:00",
+          "sender": "workmate",
+          "text": "我又没说你一夜没走。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C15",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C16",
+          "sequence": 16,
+          "time": "2033-03-09T10:07:00",
+          "sender": "self",
+          "text": "……好吧，走得有点晚。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C16",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C17",
+          "sequence": 17,
+          "time": "2033-03-09T10:08:00",
+          "sender": "workmate",
+          "text": "那今天录完就回去睡。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C17",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C18",
+          "sequence": 18,
+          "time": "2033-03-09T10:09:00",
+          "sender": "self",
+          "text": "这句话听着像是要替我做主。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C18",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C19",
+          "sequence": 19,
+          "time": "2033-03-09T10:10:00",
+          "sender": "workmate",
+          "text": "老板亲自盯着，我哪敢？只是提醒你耳朵也要休息。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C19",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C20",
+          "sequence": 20,
+          "time": "2033-03-09T10:11:00",
+          "sender": "self",
+          "text": "知道了。今天不留到凌晨。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C20",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C21",
+          "sequence": 21,
+          "time": "2033-03-09T10:12:00",
+          "sender": "workmate",
+          "text": "你上次说这话，是前天凌晨一点。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C21",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C22",
+          "sequence": 22,
+          "time": "2033-03-09T10:13:00",
+          "sender": "self",
+          "text": "这次你可以记下来，明天来核对。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C22",
+            "stage": "排期与休息",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C23",
+          "sequence": 23,
+          "time": "2033-05-31T17:20:00",
+          "sender": "self",
+          "text": "接下来几天我不在。已经确认的排期我都整理好了。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C23",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C24",
+          "sequence": 24,
+          "time": "2033-05-31T17:21:00",
+          "sender": "workmate",
+          "text": "看到了。需要临时联系你的话，怎么处理？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C24",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C25",
+          "sequence": 25,
+          "time": "2033-05-31T17:22:00",
+          "sender": "self",
+          "text": "先按共享表里的顺序处理。拿不准的留给我回来确认。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C25",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C26",
+          "sequence": 26,
+          "time": "2033-05-31T17:23:00",
+          "sender": "workmate",
+          "text": "好。你终于肯给自己放几天假了？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C26",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C27",
+          "sequence": 27,
+          "time": "2033-05-31T17:24:00",
+          "sender": "self",
+          "text": "算是吧。有些事想弄清楚。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C27",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C28",
+          "sequence": 28,
+          "time": "2033-05-31T17:25:00",
+          "sender": "workmate",
+          "text": "那工作室这边你放心。我不会乱动你标了三颗星的文件。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C28",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C29",
+          "sequence": 29,
+          "time": "2033-05-31T17:26:00",
+          "sender": "self",
+          "text": "三颗星的也可以动，先备份。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C29",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "workmate-import-C30",
+          "sequence": 30,
+          "time": "2033-05-31T17:27:00",
+          "sender": "workmate",
+          "text": "明白。你不在的时候，我也会记得按时吃饭，免得你回来检查。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "C30",
+            "stage": "参加节目之前",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        }
+      ],
+      "preview": "明白。你不在的时候，我也会记得按时吃饭，免得你回来检查。"
+    },
+    {
+      "id": "chat-mother",
+      "contactId": "mother",
+      "source": {
+        "kind": "用户提供的游戏补写",
+        "chapters": "用户本轮M01—M48；人物背景参照EP3",
+        "note": "对白逐字导入，非小说原文。M37—M46在赴英期间，M47—M48在分手回首尔后，两段之间保留明显时间间隔。未透露毕业典礼。具体日期为游戏编排。"
+      },
+      "messages": [
+        {
+          "id": "mother-import-M01",
+          "sequence": 1,
+          "time": "2024-09-19T16:20:00",
+          "sender": "mother",
+          "text": "炅潣呀，今天放学后有安排吗？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M01",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M02",
+          "sequence": 2,
+          "time": "2024-09-19T16:21:00",
+          "sender": "self",
+          "text": "没有。伯母怎么了？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M02",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M03",
+          "sequence": 3,
+          "time": "2024-09-19T16:22:00",
+          "sender": "mother",
+          "text": "我买了菜，做得有点多。来家里吃饭吧。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M03",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M04",
+          "sequence": 4,
+          "time": "2024-09-19T16:23:00",
+          "sender": "self",
+          "text": "不用特意给我准备，我可以在楼下买饭。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M04",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M05",
+          "sequence": 5,
+          "time": "2024-09-19T16:24:00",
+          "sender": "mother",
+          "text": "不是特意准备的，是我买多了。你来帮我吃掉，好不好？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M05",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M06",
+          "sequence": 6,
+          "time": "2024-09-19T16:25:00",
+          "sender": "self",
+          "text": "伯母这么说，我就不客气了。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M06",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M07",
+          "sequence": 7,
+          "time": "2024-09-19T16:26:00",
+          "sender": "mother",
+          "text": "这才对。下雨了，别忘了带伞。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M07",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M08",
+          "sequence": 8,
+          "time": "2024-09-19T16:27:00",
+          "sender": "self",
+          "text": "带了。马上到。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M08",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M09",
+          "sequence": 9,
+          "time": "2024-09-26T17:10:00",
+          "sender": "mother",
+          "text": "上次的泡菜汤是不是有点辣？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M09",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M10",
+          "sequence": 10,
+          "time": "2024-09-26T17:11:00",
+          "sender": "self",
+          "text": "没有，我吃了两碗。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M10",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M11",
+          "sequence": 11,
+          "time": "2024-09-26T17:12:00",
+          "sender": "mother",
+          "text": "你吃两碗也可能是不好意思说。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M11",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M12",
+          "sequence": 12,
+          "time": "2024-09-26T17:13:00",
+          "sender": "self",
+          "text": "那我这次吃三碗，证明真的喜欢。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M12",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M13",
+          "sequence": 13,
+          "time": "2024-09-26T17:14:00",
+          "sender": "mother",
+          "text": "你这孩子。做饭的人听了倒是很高兴。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M13",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M14",
+          "sequence": 14,
+          "time": "2024-09-26T17:15:00",
+          "sender": "self",
+          "text": "我说真的。伯母做的比便利店好吃多了。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M14",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M15",
+          "sequence": 15,
+          "time": "2024-09-26T17:16:00",
+          "sender": "mother",
+          "text": "那周末也来。申惟说要回家，正好一起吃。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M15",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M16",
+          "sequence": 16,
+          "time": "2024-09-26T17:17:00",
+          "sender": "self",
+          "text": "好。哥回来之前，我可以先帮您洗菜。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M16",
+            "stage": "高中时期",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M17",
+          "sequence": 17,
+          "time": "2029-06-08T17:05:00",
+          "sender": "mother",
+          "text": "你们两个是不是又把伞落在我家了？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M17",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M18",
+          "sequence": 18,
+          "time": "2029-06-08T17:06:00",
+          "sender": "self",
+          "text": "蓝色那把是我的。黑色那把可能是哥的。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M18",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M19",
+          "sequence": 19,
+          "time": "2029-06-08T17:07:00",
+          "sender": "mother",
+          "text": "两把都在。天气预报说明天有雨，我给你们放门口。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M19",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M20",
+          "sequence": 20,
+          "time": "2029-06-08T17:08:00",
+          "sender": "self",
+          "text": "我下班去拿。哥今晚又要加班。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M20",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M21",
+          "sequence": 21,
+          "time": "2029-06-08T17:09:00",
+          "sender": "mother",
+          "text": "他忙起来连饭都忘了吃，你别总跟着他熬。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M21",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M22",
+          "sequence": 22,
+          "time": "2029-06-08T17:10:00",
+          "sender": "self",
+          "text": "我会先吃。给他留一份就行。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M22",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M23",
+          "sequence": 23,
+          "time": "2029-06-08T17:11:00",
+          "sender": "mother",
+          "text": "你也别只顾着照顾他。今天你自己忙不忙？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M23",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M24",
+          "sequence": 24,
+          "time": "2029-06-08T17:12:00",
+          "sender": "self",
+          "text": "还好。下午去听了一段录音，耳朵有点累。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M24",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M25",
+          "sequence": 25,
+          "time": "2029-06-08T17:13:00",
+          "sender": "mother",
+          "text": "那回来先休息，饭我做好了给你装一盒。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M25",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M26",
+          "sequence": 26,
+          "time": "2029-06-08T17:14:00",
+          "sender": "self",
+          "text": "伯母，您这样我以后真的要天天来了。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M26",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M27",
+          "sequence": 27,
+          "time": "2029-06-08T17:15:00",
+          "sender": "mother",
+          "text": "你不是早就天天来了吗？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M27",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M28",
+          "sequence": 28,
+          "time": "2029-06-08T17:16:00",
+          "sender": "self",
+          "text": "被您发现了。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M28",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M29",
+          "sequence": 29,
+          "time": "2029-06-13T18:08:00",
+          "sender": "mother",
+          "text": "申惟说你们带回家一只小猫。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M29",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M30",
+          "sequence": 30,
+          "time": "2029-06-13T18:09:00",
+          "sender": "self",
+          "text": "嗯，叫taro。它还在恢复，但今天吃东西比昨天积极。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M30",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M31",
+          "sequence": 31,
+          "time": "2029-06-13T18:10:00",
+          "sender": "mother",
+          "text": "我买了条软毯子，不知道它喜不喜欢。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M31",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M32",
+          "sequence": 32,
+          "time": "2029-06-13T18:11:00",
+          "sender": "self",
+          "text": "它一定喜欢。哥昨天坐在地上陪它，自己都睡着了。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M32",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M33",
+          "sequence": 33,
+          "time": "2029-06-13T18:12:00",
+          "sender": "mother",
+          "text": "那条毯子也够申惟盖。你给他们两个一起用。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M33",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M34",
+          "sequence": 34,
+          "time": "2029-06-13T18:13:00",
+          "sender": "self",
+          "text": "明白，我负责拍照给伯母看。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M34",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M35",
+          "sequence": 35,
+          "time": "2029-06-15T20:10:00",
+          "sender": "mother",
+          "text": "照片收到了。taro看着很神气。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M35",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M36",
+          "sequence": 36,
+          "time": "2029-06-15T20:11:00",
+          "sender": "self",
+          "text": "它刚才还试图从我手里抢玩具，确实越来越神气了。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M36",
+            "stage": "一起生活之后",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M37",
+          "sequence": 37,
+          "time": "2030-12-03T23:10:00",
+          "sender": "mother",
+          "text": "听说你那边最近冷，外套带够了吗？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M37",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M38",
+          "sequence": 38,
+          "time": "2030-12-03T23:11:00",
+          "sender": "self",
+          "text": "带够了。伯母不用担心。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M38",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M39",
+          "sequence": 39,
+          "time": "2030-12-03T23:12:00",
+          "sender": "mother",
+          "text": "我问外套，你就只回答外套。吃饭呢？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M39",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M40",
+          "sequence": 40,
+          "time": "2030-12-03T23:13:00",
+          "sender": "self",
+          "text": "吃了。今天还自己煮了汤。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M40",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M41",
+          "sequence": 41,
+          "time": "2030-12-03T23:14:00",
+          "sender": "mother",
+          "text": "那就好。有空给我发张你做的饭，我看看有没有糊弄我。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M41",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M42",
+          "sequence": 42,
+          "time": "2030-12-03T23:15:00",
+          "sender": "self",
+          "text": "这不是跟哥查岗一样吗？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M42",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M43",
+          "sequence": 43,
+          "time": "2030-12-03T23:16:00",
+          "sender": "mother",
+          "text": "你们两个都爱说“吃了”，我只能自己检查。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M43",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M44",
+          "sequence": 44,
+          "time": "2030-12-03T23:17:00",
+          "sender": "self",
+          "text": "下次拍给您。taro最近好吗？",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M44",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M45",
+          "sequence": 45,
+          "time": "2030-12-03T23:18:00",
+          "sender": "mother",
+          "text": "有人陪它玩，很有精神。你照顾好自己。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M45",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M46",
+          "sequence": 46,
+          "time": "2030-12-03T23:19:00",
+          "sender": "self",
+          "text": "嗯。您也是。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M46",
+            "stage": "赴英期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M47",
+          "sequence": 47,
+          "time": "2033-05-28T19:12:00",
+          "sender": "mother",
+          "text": "炅潣，最近工作还顺利吗？不忙的时候来家里吃顿饭吧。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M47",
+            "stage": "分手后，回首尔工作期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        },
+        {
+          "id": "mother-import-M48",
+          "sequence": 48,
+          "time": "2033-05-28T19:13:00",
+          "sender": "self",
+          "text": "顺利。等手上的事告一段落，我去看您。",
+          "source": {
+            "kind": "用户提供的游戏补写",
+            "itemNumber": "M48",
+            "stage": "分手后，回首尔工作期间",
+            "note": "非小说原文；日期与分钟为按阶段安排的游戏编排。"
+          }
+        }
+      ],
+      "preview": "顺利。等手上的事告一段落，我去看您。"
+    },
+    {
+      "id": "chat-shin",
+      "contactId": "shin",
+      "kind": "archive",
+      "preview": "哥，我们分手吧。",
+      "notice": "对方已不再是你的好友",
+      "context": "聊天记录有省略 · 时间按首尔时间显示",
+      "footer": "历史聊天 · 无法发送消息",
+      "clueIds": [
+        "hurt"
+      ],
+      "source": {
+        "kind": "用户提供对白＋日期编排",
+        "chapters": "EP1、EP3、EP10；用户确认的160条私人聊天",
+        "note": "完整替换旧占位聊天，按编号1—160显示；编号及阶段不进入气泡。交往起于2026.10、家庭变动在2029年冬、分手在2031.12作为锚点。具体月日为游戏编排。第八阶段以用户提供的连续对话与12月分手编排在12月15—16日；原稿另述夏季学期末回国，未将本次编排日期当成已核实的正篇日期。 用户进一步确认告白日期为2026年10月2日，第041—048条发生在2026年10月3日。"
+      },
+      "messages": [
+        {
+          "id": "shin-import-001",
+          "sequence": 1,
+          "time": "2024-10-17T18:02:00",
+          "sender": "self",
+          "text": "伯母说你今天回家吃饭。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 1,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-002",
+          "sequence": 2,
+          "time": "2024-10-17T18:03:00",
+          "sender": "shin",
+          "text": "你怎么比我先知道我回不回家？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 2,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-003",
+          "sequence": 3,
+          "time": "2024-10-17T18:04:00",
+          "sender": "self",
+          "text": "因为伯母先问我想吃什么。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 3,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-004",
+          "sequence": 4,
+          "time": "2024-10-17T18:05:00",
+          "sender": "shin",
+          "text": "原来我才是被通知的那个。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 4,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-005",
+          "sequence": 5,
+          "time": "2024-10-17T18:06:00",
+          "sender": "self",
+          "text": "哥要是不回来，泡菜饼就全是我的。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 5,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-006",
+          "sequence": 6,
+          "time": "2024-10-17T18:07:00",
+          "sender": "shin",
+          "text": "五分钟后到。给我留一块。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 6,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-007",
+          "sequence": 7,
+          "time": "2024-10-17T18:08:00",
+          "sender": "self",
+          "text": "你不是说不爱吃煎得太焦的吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 7,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-008",
+          "sequence": 8,
+          "time": "2024-10-17T18:09:00",
+          "sender": "shin",
+          "text": "但你每次都会挑最焦的给我。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 8,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-009",
+          "sequence": 9,
+          "time": "2024-10-17T18:10:00",
+          "sender": "self",
+          "text": "那是因为我觉得好吃。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 9,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-010",
+          "sequence": 10,
+          "time": "2024-10-17T18:11:00",
+          "sender": "shin",
+          "text": "嗯，我知道。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 10,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-011",
+          "sequence": 11,
+          "time": "2024-10-24T18:38:00",
+          "sender": "shin",
+          "text": "你今天放学怎么这么晚？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 11,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-012",
+          "sequence": 12,
+          "time": "2024-10-24T18:39:00",
+          "sender": "self",
+          "text": "去了书店。你上次说的那本我找到了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 12,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-013",
+          "sequence": 13,
+          "time": "2024-10-24T18:40:00",
+          "sender": "shin",
+          "text": "我随口提的，你真去找了？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 13,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-014",
+          "sequence": 14,
+          "time": "2024-10-24T18:41:00",
+          "sender": "self",
+          "text": "不是为了你。我也想看。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 14,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-015",
+          "sequence": 15,
+          "time": "2024-10-24T18:42:00",
+          "sender": "shin",
+          "text": "好，那看完借我。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 15,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-016",
+          "sequence": 16,
+          "time": "2024-10-24T18:43:00",
+          "sender": "self",
+          "text": "要排队，我先看。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 16,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-017",
+          "sequence": 17,
+          "time": "2024-10-24T18:44:00",
+          "sender": "shin",
+          "text": "前面还有谁？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 17,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-018",
+          "sequence": 18,
+          "time": "2024-10-24T18:45:00",
+          "sender": "self",
+          "text": "没有。只是想让你等一下。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 18,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-019",
+          "sequence": 19,
+          "time": "2024-10-24T18:46:00",
+          "sender": "shin",
+          "text": "你还挺记仇。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 19,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-020",
+          "sequence": 20,
+          "time": "2024-10-24T18:47:00",
+          "sender": "self",
+          "text": "谁让哥上次让我在电影院门口等了十二分钟。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：高中与邻居时期",
+            "stage": "常去彼此家里",
+            "itemNumber": 20,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-021",
+          "sequence": 21,
+          "time": "2026-09-08T16:21:00",
+          "sender": "self",
+          "text": "哥，门口那个袋子别扔。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 21,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-022",
+          "sequence": 22,
+          "time": "2026-09-08T16:22:00",
+          "sender": "shin",
+          "text": "我看见了。里面又是什么？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 22,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-023",
+          "sequence": 23,
+          "time": "2026-09-08T16:23:00",
+          "sender": "self",
+          "text": "一个烛托。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 23,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-024",
+          "sequence": 24,
+          "time": "2026-09-08T16:24:00",
+          "sender": "shin",
+          "text": "上周不是才买了三个？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 24,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-025",
+          "sequence": 25,
+          "time": "2026-09-08T16:25:00",
+          "sender": "self",
+          "text": "这个是小猫烤火的。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 25,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-026",
+          "sequence": 26,
+          "time": "2026-09-08T16:26:00",
+          "sender": "shin",
+          "text": "这句话并不能解释为什么需要第四个。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 26,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-027",
+          "sequence": 27,
+          "time": "2026-09-08T16:27:00",
+          "sender": "self",
+          "text": "等你看到就懂了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 27,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-028",
+          "sequence": 28,
+          "time": "2026-09-08T16:28:00",
+          "sender": "shin",
+          "text": "好吧。我先给它腾个位置。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 28,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-029",
+          "sequence": 29,
+          "time": "2026-09-15T17:32:00",
+          "sender": "shin",
+          "text": "岛台上那块粉紫色的是你的东西吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 29,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-030",
+          "sequence": 30,
+          "time": "2026-09-15T17:33:00",
+          "sender": "self",
+          "text": "扩香石。像小猪吧？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 30,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-031",
+          "sequence": 31,
+          "time": "2026-09-15T17:34:00",
+          "sender": "shin",
+          "text": "我以为是河马，没敢说。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 31,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-032",
+          "sequence": 32,
+          "time": "2026-09-15T17:35:00",
+          "sender": "self",
+          "text": "现在敢说了？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 32,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-033",
+          "sequence": 33,
+          "time": "2026-09-15T17:36:00",
+          "sender": "shin",
+          "text": "因为你问了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 33,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-034",
+          "sequence": 34,
+          "time": "2026-09-15T17:37:00",
+          "sender": "self",
+          "text": "哥的求生欲不太稳定。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 34,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-035",
+          "sequence": 35,
+          "time": "2026-09-15T17:38:00",
+          "sender": "shin",
+          "text": "所以这只小猪要放哪里？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 35,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-036",
+          "sequence": 36,
+          "time": "2026-09-15T17:39:00",
+          "sender": "self",
+          "text": "放你电脑旁边。你总盯屏幕，抬头看看它。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 36,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-037",
+          "sequence": 37,
+          "time": "2026-09-23T20:12:00",
+          "sender": "shin",
+          "text": "你把东西一件件放进来，是不是在试我的架子能装多少？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 37,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-038",
+          "sequence": 38,
+          "time": "2026-09-23T20:13:00",
+          "sender": "self",
+          "text": "被发现了。下一件可能是个大箱子。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 38,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-039",
+          "sequence": 39,
+          "time": "2026-09-23T20:15:00",
+          "sender": "shin",
+          "text": "那不如把人也搬过来，省得你来回搬。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 39,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-040",
+          "sequence": 40,
+          "time": "2026-09-23T20:18:00",
+          "sender": "self",
+          "text": "哥，这句我会当真的。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：同居邀请之前",
+            "stage": "大学时期，物件逐渐搬入",
+            "itemNumber": 40,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-041",
+          "sequence": 41,
+          "time": "2026-10-03T09:14:00",
+          "sender": "shin",
+          "text": "醒了吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 41,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-042",
+          "sequence": 42,
+          "time": "2026-10-03T09:15:00",
+          "sender": "self",
+          "text": "醒了。还在看戒指。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 42,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-043",
+          "sequence": 43,
+          "time": "2026-10-03T09:16:00",
+          "sender": "shin",
+          "text": "不喜欢的话，可以陪你去换。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 43,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-044",
+          "sequence": 44,
+          "time": "2026-10-03T09:17:00",
+          "sender": "self",
+          "text": "谁说不喜欢了？我是在确认昨天不是做梦。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 44,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-045",
+          "sequence": 45,
+          "time": "2026-10-03T09:18:00",
+          "sender": "shin",
+          "text": "那现在确认了吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 45,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-046",
+          "sequence": 46,
+          "time": "2026-10-03T09:19:00",
+          "sender": "self",
+          "text": "没有。哥再说一遍。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 46,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-047",
+          "sequence": 47,
+          "time": "2026-10-03T09:20:00",
+          "sender": "shin",
+          "text": "李炅潣，我喜欢你。想和你在一起。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 47,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-048",
+          "sequence": 48,
+          "time": "2026-10-03T09:22:00",
+          "sender": "self",
+          "text": "这次听清了。我也喜欢哥。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 48,
+            "note": "用户确认告白日期为2026年10月2日，本段为次日2026年10月3日；具体分钟为游戏编排。"
+          }
+        },
+        {
+          "id": "shin-import-049",
+          "sequence": 49,
+          "time": "2027-02-18T22:06:00",
+          "sender": "self",
+          "text": "你今天回家会很晚吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 49,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-050",
+          "sequence": 50,
+          "time": "2027-02-18T22:07:00",
+          "sender": "shin",
+          "text": "可能要加一会儿班。你先睡。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 50,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-051",
+          "sequence": 51,
+          "time": "2027-02-18T22:08:00",
+          "sender": "self",
+          "text": "我会先睡。但门口的灯给你留着。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 51,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-052",
+          "sequence": 52,
+          "time": "2027-02-18T22:09:00",
+          "sender": "shin",
+          "text": "其实走廊有灯。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 52,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-053",
+          "sequence": 53,
+          "time": "2027-02-18T22:10:00",
+          "sender": "self",
+          "text": "我知道。那盏是我留的。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 53,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-054",
+          "sequence": 54,
+          "time": "2027-02-18T22:12:00",
+          "sender": "shin",
+          "text": "好。我会早点回来。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 54,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-055",
+          "sequence": 55,
+          "time": "2027-05-01T14:31:00",
+          "sender": "shin",
+          "text": "今天去游乐园，你真不戴那个小狗发箍？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 55,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-056",
+          "sequence": 56,
+          "time": "2027-05-01T14:32:00",
+          "sender": "self",
+          "text": "发型会被压扁。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 56,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-057",
+          "sequence": 57,
+          "time": "2027-05-01T14:33:00",
+          "sender": "shin",
+          "text": "你明明自己说它可爱。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 57,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-058",
+          "sequence": 58,
+          "time": "2027-05-01T14:34:00",
+          "sender": "self",
+          "text": "是可爱，所以给哥戴。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 58,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-059",
+          "sequence": 59,
+          "time": "2027-05-01T14:35:00",
+          "sender": "shin",
+          "text": "你是不是从一开始就打算这么做？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 59,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-060",
+          "sequence": 60,
+          "time": "2027-05-01T14:36:00",
+          "sender": "self",
+          "text": "哥现在才发现？太晚了，已经拍照了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP1、EP3：2026年10月起的恋爱与留灯日常",
+            "stage": "正式在一起之后",
+            "itemNumber": 60,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-061",
+          "sequence": 61,
+          "time": "2029-06-11T21:18:00",
+          "sender": "self",
+          "text": "医院说它今晚要留院观察。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 61,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-062",
+          "sequence": 62,
+          "time": "2029-06-11T21:19:00",
+          "sender": "shin",
+          "text": "我知道。你先把手上的血洗掉。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 62,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-063",
+          "sequence": 63,
+          "time": "2029-06-11T21:20:00",
+          "sender": "self",
+          "text": "那不是我的血。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 63,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-064",
+          "sequence": 64,
+          "time": "2029-06-11T21:21:00",
+          "sender": "shin",
+          "text": "我知道，但你一直在看它。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 64,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-065",
+          "sequence": 65,
+          "time": "2029-06-11T21:23:00",
+          "sender": "self",
+          "text": "它刚才还抓着我的袖子。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 65,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-066",
+          "sequence": 66,
+          "time": "2029-06-11T21:26:00",
+          "sender": "shin",
+          "text": "明天我们一起再来。它醒来会看到我们的。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 66,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-067",
+          "sequence": 67,
+          "time": "2029-06-11T23:02:00",
+          "sender": "self",
+          "text": "哥觉得它叫什么好？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 67,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-068",
+          "sequence": 68,
+          "time": "2029-06-11T23:03:00",
+          "sender": "shin",
+          "text": "你已经想好了吧？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 68,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-069",
+          "sequence": 69,
+          "time": "2029-06-11T23:04:00",
+          "sender": "self",
+          "text": "taro。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 69,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-070",
+          "sequence": 70,
+          "time": "2029-06-11T23:05:00",
+          "sender": "shin",
+          "text": "为什么是这个？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 70,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-071",
+          "sequence": 71,
+          "time": "2029-06-11T23:06:00",
+          "sender": "self",
+          "text": "刚才路上看见一家卖芋头甜点的店。名字听着很圆，很适合它。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 71,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-072",
+          "sequence": 72,
+          "time": "2029-06-11T23:07:00",
+          "sender": "shin",
+          "text": "它那么小，还瘦得硌手。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 72,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-073",
+          "sequence": 73,
+          "time": "2029-06-11T23:08:00",
+          "sender": "self",
+          "text": "所以要把它养得圆一点。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 73,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-074",
+          "sequence": 74,
+          "time": "2029-06-11T23:10:00",
+          "sender": "shin",
+          "text": "好，taro。明天去接它。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 74,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-075",
+          "sequence": 75,
+          "time": "2029-06-12T11:24:00",
+          "sender": "shin",
+          "text": "你把蜡烛都收起来了？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 75,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-076",
+          "sequence": 76,
+          "time": "2029-06-12T11:25:00",
+          "sender": "self",
+          "text": "先锁柜子里。等问过医生再说。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 76,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-077",
+          "sequence": 77,
+          "time": "2029-06-12T11:26:00",
+          "sender": "shin",
+          "text": "那些不是你最喜欢的吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 77,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-078",
+          "sequence": 78,
+          "time": "2029-06-12T11:28:00",
+          "sender": "self",
+          "text": "喜欢也可以先不点。taro还不会替自己做选择。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 78,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-079",
+          "sequence": 79,
+          "time": "2029-06-15T18:08:00",
+          "sender": "shin",
+          "text": "它刚才拖着腿跑去门口等你。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 79,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-080",
+          "sequence": 80,
+          "time": "2029-06-15T18:10:00",
+          "sender": "self",
+          "text": "像谁？我才下楼十分钟。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：大三时收养taro",
+            "stage": "把taro带回家",
+            "itemNumber": 80,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-081",
+          "sequence": 81,
+          "time": "2029-12-12T19:43:00",
+          "sender": "shin",
+          "text": "你今天和家里通话了？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 81,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-082",
+          "sequence": 82,
+          "time": "2029-12-12T19:44:00",
+          "sender": "self",
+          "text": "哥听到了多少？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 82,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-083",
+          "sequence": 83,
+          "time": "2029-12-12T19:45:00",
+          "sender": "shin",
+          "text": "听到了英国。还有你说不想走。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 83,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-084",
+          "sequence": 84,
+          "time": "2029-12-12T19:46:00",
+          "sender": "self",
+          "text": "那就听到了最重要的部分。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 84,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-085",
+          "sequence": 85,
+          "time": "2029-12-12T19:47:00",
+          "sender": "shin",
+          "text": "先回来吃点东西吧。我煮了拉面。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 85,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-086",
+          "sequence": 86,
+          "time": "2029-12-12T19:48:00",
+          "sender": "self",
+          "text": "哥不问我接下来怎么办？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 86,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-087",
+          "sequence": 87,
+          "time": "2029-12-12T19:49:00",
+          "sender": "shin",
+          "text": "你现在也还没想好。我可以陪你慢慢想。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 87,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-088",
+          "sequence": 88,
+          "time": "2029-12-12T19:50:00",
+          "sender": "self",
+          "text": "我已经想好了。我想留在这里。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 88,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-089",
+          "sequence": 89,
+          "time": "2029-12-12T19:51:00",
+          "sender": "shin",
+          "text": "我知道你舍不得这里。但这件事关系到你毕业以后。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 89,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-090",
+          "sequence": 90,
+          "time": "2029-12-12T19:52:00",
+          "sender": "self",
+          "text": "哥说得像我舍不得的只是一座城市。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 90,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-091",
+          "sequence": 91,
+          "time": "2029-12-12T19:53:00",
+          "sender": "shin",
+          "text": "炅潣，我不是那个意思。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 91,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-092",
+          "sequence": 92,
+          "time": "2029-12-12T19:54:00",
+          "sender": "self",
+          "text": "我知道。刚才对父母发完火，又冲你说话了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 92,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-093",
+          "sequence": 93,
+          "time": "2029-12-12T19:55:00",
+          "sender": "shin",
+          "text": "没关系。面快坨了，先来吃。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 93,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-094",
+          "sequence": 94,
+          "time": "2029-12-12T19:57:00",
+          "sender": "self",
+          "text": "taro把尾巴搭在我手上了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 94,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-095",
+          "sequence": 95,
+          "time": "2029-12-12T19:58:00",
+          "sender": "shin",
+          "text": "它大概也觉得我劝人的本事很差。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 95,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-096",
+          "sequence": 96,
+          "time": "2029-12-12T20:00:00",
+          "sender": "self",
+          "text": "哥不用替我解决这件事。陪我坐一会儿就好。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 96,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-097",
+          "sequence": 97,
+          "time": "2029-12-12T22:16:00",
+          "sender": "shin",
+          "text": "如果你最后去了，我会去看你。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 97,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-098",
+          "sequence": 98,
+          "time": "2029-12-12T22:18:00",
+          "sender": "self",
+          "text": "工作那么忙，哥不要随便答应。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 98,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-099",
+          "sequence": 99,
+          "time": "2029-12-12T22:20:00",
+          "sender": "shin",
+          "text": "不是随便答应。我也想去你的毕业典礼。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 99,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-100",
+          "sequence": 100,
+          "time": "2029-12-12T22:23:00",
+          "sender": "self",
+          "text": "那我记住了。哥以后别说我没提醒过你。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：2029年冬家庭变动",
+            "stage": "家里谈起英国",
+            "itemNumber": 100,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-101",
+          "sequence": 101,
+          "time": "2030-09-24T23:07:00",
+          "sender": "self",
+          "text": "我下课了。首尔是不是已经很晚？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 101,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-102",
+          "sequence": 102,
+          "time": "2030-09-24T23:08:00",
+          "sender": "shin",
+          "text": "还好，刚洗完澡。你今天有好好吃饭吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 102,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-103",
+          "sequence": 103,
+          "time": "2030-09-24T23:09:00",
+          "sender": "self",
+          "text": "有。晚饭是三明治。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 103,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-104",
+          "sequence": 104,
+          "time": "2030-09-24T23:10:00",
+          "sender": "shin",
+          "text": "你把午饭换个时间说，就算晚饭？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 104,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-105",
+          "sequence": 105,
+          "time": "2030-09-24T23:11:00",
+          "sender": "self",
+          "text": "被发现了。现在去煮点东西。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 105,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-106",
+          "sequence": 106,
+          "time": "2030-09-24T23:12:00",
+          "sender": "shin",
+          "text": "视频开着吧，我看你煮。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 106,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-107",
+          "sequence": 107,
+          "time": "2030-09-24T23:13:00",
+          "sender": "self",
+          "text": "哥这么不信任我的厨艺？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 107,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-108",
+          "sequence": 108,
+          "time": "2030-09-24T23:14:00",
+          "sender": "shin",
+          "text": "是怕你煮到一半又去看唱片。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 108,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-109",
+          "sequence": 109,
+          "time": "2030-12-18T23:21:00",
+          "sender": "shin",
+          "text": "你现在在哪里？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 109,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-110",
+          "sequence": 110,
+          "time": "2030-12-18T23:22:00",
+          "sender": "self",
+          "text": "公寓楼下。你问这个做什么？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 110,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-111",
+          "sequence": 111,
+          "time": "2030-12-18T23:23:00",
+          "sender": "shin",
+          "text": "抬头。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 111,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-112",
+          "sequence": 112,
+          "time": "2030-12-18T23:24:00",
+          "sender": "self",
+          "text": "哥？你不是说今晚要开会吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 112,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-113",
+          "sequence": 113,
+          "time": "2030-12-18T23:25:00",
+          "sender": "shin",
+          "text": "会议结束了。花快被雨淋坏了，先让我进去。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 113,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-114",
+          "sequence": 114,
+          "time": "2030-12-18T23:26:00",
+          "sender": "self",
+          "text": "你站着别动。我下来接你。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 114,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-115",
+          "sequence": 115,
+          "time": "2030-12-19T22:38:00",
+          "sender": "self",
+          "text": "今天那只海鸥差点抢走我整块面包。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 115,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-116",
+          "sequence": 116,
+          "time": "2030-12-19T22:39:00",
+          "sender": "shin",
+          "text": "你还伸着手不肯松。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 116,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-117",
+          "sequence": 117,
+          "time": "2030-12-19T22:40:00",
+          "sender": "self",
+          "text": "那是给天鹅的。输了也不能输给它。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 117,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-118",
+          "sequence": 118,
+          "time": "2030-12-19T22:41:00",
+          "sender": "shin",
+          "text": "回去把照片发给taro看。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 118,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-119",
+          "sequence": 119,
+          "time": "2030-12-19T22:42:00",
+          "sender": "self",
+          "text": "它看了也只会找哥手机上的游戏。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 119,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-120",
+          "sequence": 120,
+          "time": "2030-12-19T22:43:00",
+          "sender": "shin",
+          "text": "那就发给我。我会认真看。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：赴伦敦后及探望期间",
+            "stage": "伦敦，仍然努力靠近",
+            "itemNumber": 120,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-121",
+          "sequence": 121,
+          "time": "2031-10-06T23:08:00",
+          "sender": "self",
+          "text": "到家了吗？今天还可以视频吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 121,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-122",
+          "sequence": 122,
+          "time": "2031-10-06T23:09:00",
+          "sender": "shin",
+          "text": "还在公司。可能要再晚一点。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 122,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-123",
+          "sequence": 123,
+          "time": "2031-10-06T23:10:00",
+          "sender": "self",
+          "text": "好，我等一会儿。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 123,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-124",
+          "sequence": 124,
+          "time": "2031-10-06T23:12:00",
+          "sender": "shin",
+          "text": "别等太晚。你明天不是有课？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 124,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-125",
+          "sequence": 125,
+          "time": "2031-10-06T23:14:00",
+          "sender": "self",
+          "text": "我知道。我只是想听听哥的声音。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 125,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-126",
+          "sequence": 126,
+          "time": "2031-10-06T23:18:00",
+          "sender": "shin",
+          "text": "我结束就打给你。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 126,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-127",
+          "sequence": 127,
+          "time": "2031-10-07T18:05:00",
+          "sender": "self",
+          "text": "哥，昨天那个电话是几点结束的？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 127,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-128",
+          "sequence": 128,
+          "time": "2031-10-07T18:06:00",
+          "sender": "shin",
+          "text": "抱歉，后来忙到早上。我忘记告诉你。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 128,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-129",
+          "sequence": 129,
+          "time": "2031-10-07T18:08:00",
+          "sender": "self",
+          "text": "忘记一次可以，两次也可以。下次提前说行吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 129,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-130",
+          "sequence": 130,
+          "time": "2031-10-07T18:09:00",
+          "sender": "shin",
+          "text": "行。我昨天确实没做好。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 130,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-131",
+          "sequence": 131,
+          "time": "2031-10-07T18:10:00",
+          "sender": "self",
+          "text": "不是让你道歉。我只是想知道要不要一直等。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 131,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-132",
+          "sequence": 132,
+          "time": "2031-10-07T18:13:00",
+          "sender": "shin",
+          "text": "我明白。今晚不会让你等。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 132,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-133",
+          "sequence": 133,
+          "time": "2031-11-12T22:03:00",
+          "sender": "self",
+          "text": "taro最近怎么样？伯母说它跑得比以前快了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 133,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-134",
+          "sequence": 134,
+          "time": "2031-11-12T22:04:00",
+          "sender": "shin",
+          "text": "快多了，刚才还碰倒了我的水杯。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 134,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-135",
+          "sequence": 135,
+          "time": "2031-11-12T22:05:00",
+          "sender": "self",
+          "text": "拍给我看看？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 135,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-136",
+          "sequence": 136,
+          "time": "2031-11-12T22:06:00",
+          "sender": "shin",
+          "text": "我现在没在家。回去拍。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 136,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-137",
+          "sequence": 137,
+          "time": "2031-11-12T22:08:00",
+          "sender": "self",
+          "text": "好。上周你也这么说了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 137,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-138",
+          "sequence": 138,
+          "time": "2031-11-12T22:10:00",
+          "sender": "shin",
+          "text": "炅潣，我现在真的在忙。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 138,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-139",
+          "sequence": 139,
+          "time": "2031-11-12T22:12:00",
+          "sender": "self",
+          "text": "我知道。等你忙完再说。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 139,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-140",
+          "sequence": 140,
+          "time": "2031-11-12T22:46:00",
+          "sender": "shin",
+          "text": "看到了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：异国沟通恶化",
+            "stage": "越来越难对上时间",
+            "itemNumber": 140,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-141",
+          "sequence": 141,
+          "time": "2031-12-15T19:17:00",
+          "sender": "self",
+          "text": "哥，今晚会回家吗？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 141,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-142",
+          "sequence": 142,
+          "time": "2031-12-15T19:20:00",
+          "sender": "shin",
+          "text": "上线前测试，可能很晚。怎么了？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 142,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-143",
+          "sequence": 143,
+          "time": "2031-12-15T19:21:00",
+          "sender": "self",
+          "text": "没事。就是问一下。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 143,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-144",
+          "sequence": 144,
+          "time": "2031-12-15T19:23:00",
+          "sender": "shin",
+          "text": "你那边不是还没到晚上？早点休息。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 144,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-145",
+          "sequence": 145,
+          "time": "2031-12-15T19:24:00",
+          "sender": "self",
+          "text": "嗯。哥忙吧。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 145,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-146",
+          "sequence": 146,
+          "time": "2031-12-15T22:09:00",
+          "sender": "self",
+          "text": "我给你打过电话。看到的话回我一下。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 146,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-147",
+          "sequence": 147,
+          "time": "2031-12-15T22:57:00",
+          "sender": "self",
+          "text": "如果今晚不回来，也告诉我一声。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 147,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-148",
+          "sequence": 148,
+          "time": "2031-12-16T00:00:00",
+          "sender": "self",
+          "text": "taro一直在门口转。我先让它睡了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 148,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-149",
+          "sequence": 149,
+          "time": "2031-12-16T00:57:00",
+          "sender": "self",
+          "text": "算了，等你忙完再说。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 149,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-150",
+          "sequence": 150,
+          "time": "2031-12-16T07:23:00",
+          "sender": "shin",
+          "text": "刚看到消息。昨天一直在公司，没回家。对不起。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 150,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-151",
+          "sequence": 151,
+          "time": "2031-12-16T07:25:00",
+          "sender": "self",
+          "text": "我知道了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 151,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-152",
+          "sequence": 152,
+          "time": "2031-12-16T07:27:00",
+          "sender": "shin",
+          "text": "你现在在伦敦吗？刚才电话里没听清。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 152,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-153",
+          "sequence": 153,
+          "time": "2031-12-16T07:28:00",
+          "sender": "self",
+          "text": "在机场，准备回去。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 153,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-154",
+          "sequence": 154,
+          "time": "2031-12-16T07:29:00",
+          "sender": "shin",
+          "text": "你昨天回来过？",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 154,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-155",
+          "sequence": 155,
+          "time": "2031-12-16T07:31:00",
+          "sender": "self",
+          "text": "回来过。也已经走了。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 155,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-156",
+          "sequence": 156,
+          "time": "2031-12-16T07:34:00",
+          "sender": "shin",
+          "text": "炅潣，等我下班，我们好好谈。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 156,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-157",
+          "sequence": 157,
+          "time": "2031-12-16T07:36:00",
+          "sender": "self",
+          "text": "哥先把工作忙完吧。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 157,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-158",
+          "sequence": 158,
+          "time": "2031-12-16T07:38:00",
+          "sender": "shin",
+          "text": "我不是这个意思。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 158,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-159",
+          "sequence": 159,
+          "time": "2031-12-16T21:06:00",
+          "sender": "self",
+          "text": "毕业典礼的事，我刚才在电话里已经听到答案了。不用再解释。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 159,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          }
+        },
+        {
+          "id": "shin-import-160",
+          "sequence": 160,
+          "time": "2031-12-16T21:18:00",
+          "sender": "self",
+          "text": "哥，我们分手吧。",
+          "source": {
+            "kind": "用户提供对白",
+            "chapters": "EP3：回国落空与2031年12月分手",
+            "stage": "错过回家，走向分手",
+            "itemNumber": 160,
+            "note": "对白逐字导入；具体日期与分钟为游戏编排，不表示原稿给出该精确日期。"
+          },
+          "receipt": "已读"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "id": "photo-rain",
+      "title": "雨刷之间",
+      "date": "2033-06-06 · 汽车影院开场前",
+      "sortKey": "2033-06-06T16:00",
+      "description": "雨水留在挡风玻璃上，远处是还没有亮起来的白色幕布。两杯无糖可乐卡在杯托里，爆米花袋的边角挤进画面。副驾只露出一截袖口，玉米片放在旁边。",
+      "palette": "night",
+      "clueIds": [
+        "han"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP11",
+        "note": "雨天汽车影院、食物与韩振在场是正文事实；拍摄行为和构图为新增。"
+      }
+    },
+    {
+      "id": "photo-route",
+      "title": "没用上的路线",
+      "date": "2033-06-06 · 出发前",
+      "sortKey": "2033-06-06T15:00",
+      "description": "一张路线文字截图。原先保存的是南山塔，旁边还留着坡州汽车电影院的备选搜索。没有同行人的名字，也没有被勾选的“下次”。",
+      "palette": "sunset",
+      "clueIds": [
+        "han"
+      ],
+      "source": {
+        "kind": "载体新增",
+        "chapters": "EP9、EP11",
+        "note": "两处目的地来自正文；保存截图为改编。"
+      }
+    },
+    {
+      "id": "photo-chord",
+      "title": "第三个和弦",
+      "date": "2033-06-04 · 晚间吉他课",
+      "sortKey": "2033-06-04T20:30",
+      "description": "吉他琴颈横在膝上，左手的手指还摆得有点僵。画面边缘是一瓶没开封的冰啤酒，瓶壁凝着水。没有拍到老师的脸。",
+      "palette": "sunset",
+      "clueIds": [
+        "music"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP5",
+        "note": "课堂和冰敷来自正文；拍照为新增。"
+      }
+    },
+    {
+      "id": "photo-pig",
+      "title": "小猪",
+      "date": "录制前 · 日期未记",
+      "sortKey": "0003",
+      "description": "一只粉紫色的小猪扩香石，被放在打开的行李箱旁。边角有一点使用过的痕迹，其他衣服只铺了一半。",
+      "palette": "sunset",
+      "clueIds": [
+        "pig"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP3、EP7",
+        "note": "物件来自正文；照片为新增。sortKey仅用于相对排序，不是正文拍摄日期。"
+      }
+    },
+    {
+      "id": "photo-taro",
+      "title": "被选中的枕头",
+      "date": "交往期间 · 日期未记",
+      "sortKey": "0001",
+      "description": "申惟躺在沙发上，taro 趴在他肚子上睡觉。想起身又不敢动的人，表情有点痛苦，又有点好笑。\n\n照片角落留着两行字：\n“taro最爱的人”\n“只是taro选中的枕头”",
+      "palette": "sunset",
+      "clueIds": [
+        "taro"
+      ],
+      "source": {
+        "kind": "正文＋载体新增",
+        "chapters": "EP10",
+        "note": "照片与两句题字来自正文；手机留存为改编。排序键不代表确切拍摄日期。"
+      },
+      "undated": true
+    },
+    {
+      "id": "photo-london",
+      "title": "跳舞",
+      "date": "伦敦之行 · 日期未记",
+      "sortKey": "0001",
+      "description": "一段旧影像的文字卡。夜里的路灯，摇晃的镜头，还有一位拍手起哄的大叔。\n\n“对不起，炅潣，哥错了，原谅我吧好不好？”\n\n申惟解下围巾给炅潣戴上。两个人的舞步都不熟练，笑声让镜头又晃了一下。",
+      "palette": "night",
+      "clueIds": [
+        "london"
+      ],
+      "source": {
+        "kind": "正文＋载体新增",
+        "chapters": "EP1、EP10",
+        "note": "影像内容来自正文；手机留存为改编。日期未定；与taro照片的先后未证实，排序键仅为旧影像展示顺序。"
+      },
+      "undated": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-dot",
+      "title": "。",
+      "date": "2033-06-06 · 下午出门前",
+      "sortKey": "2033-06-06T14:40",
+      "body": "毕业照\n\n“炅潣，做的好。”\n\n",
+      "clueIds": [
+        "graduation"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP10",
+        "note": "题字来自正文；炅潣写下短记为新增，没有翻拍或带走毕业照。"
+      }
+    },
+    {
+      "id": "note-sunday",
+      "title": "出门",
+      "date": "2033-06-06 · 出门前更新",
+      "sortKey": "2033-06-06T14:35",
+      "body": "南山塔\n雨天备用：坡州汽车电影院\n\n带伞。\n先问他喜欢什么电影。",
+      "clueIds": [
+        "han"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP9、EP11",
+        "note": "原计划与备用目的地来自正文；清单措辞为新增。"
+      }
+    },
+    {
+      "id": "note-guitar",
+      "title": "金老师的课",
+      "date": "2033-06-04 · 吉他课后",
+      "sortKey": "2033-06-04T21:00",
+      "body": "手腕放松。\n先按响，再换。\n手擦干再碰琴。\n\n下次别停在三个。",
+      "clueIds": [
+        "music"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP5",
+        "note": "课堂与继续练习来自正文；记法为新增，不假定和弦名称。"
+      }
+    },
+    {
+      "id": "note-order",
+      "title": "下次点单",
+      "date": "2033-06-04 · 晚餐后",
+      "sortKey": "2033-06-04T19:50",
+      "body": "肋眼，五分熟。\n啤酒。\n\n不是每次都点我爱吃的。",
+      "clueIds": [
+        "taste"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP4",
+        "note": "口味与主动记住来自正文；备忘录载体为新增。"
+      }
+    },
+    {
+      "id": "note-pack",
+      "title": "带走",
+      "date": "录制前 · 日期未记",
+      "sortKey": "0003",
+      "body": "充电器\n耳机\n换洗衣服\n\n小猪扩香石。",
+      "clueIds": [
+        "pig"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP7",
+        "note": "物件为正文；清单为新增，sortKey仅作相对排序。"
+      }
+    },
+    {
+      "id": "note-food",
+      "title": "下次别点这么多",
+      "date": "分手前 · 最后一次回国之后",
+      "sortKey": "0001",
+      "body": "一个人吃不完。",
+      "clueIds": [
+        "coldfood"
+      ],
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP3",
+        "note": "等候一夜、冷饭被倒掉来自正文；短记和留存为新增，未给定具体日期。"
+      }
+    }
+  ],
+  "calls": [
+    {
+      "id": "call-work-d3",
+      "contactId": "workmate",
+      "time": "2033-06-04 08:40",
+      "type": "呼入 · 已接",
+      "detail": "通话时长 00:42\n事项：确认上午录音准备。",
+      "missed": false,
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP4",
+        "note": "正文仅确认上午有录音；电话与时长为新增。"
+      }
+    },
+    {
+      "id": "call-work-d2",
+      "contactId": "workmate",
+      "time": "2033-06-03 14:10",
+      "type": "呼出 · 已接",
+      "detail": "通话时长 01:08\n事项：工作文件交接。",
+      "missed": false,
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP2",
+        "note": "普通工作联络，不涉及约会信息。"
+      }
+    },
+    {
+      "id": "call-mother",
+      "contactId": "mother",
+      "time": "2033-05-28 19:27",
+      "type": "呼入 · 已接",
+      "detail": "通话时长 02:13\n事项：近况问候。",
+      "missed": false,
+      "source": {
+        "kind": "日常新增",
+        "chapters": "EP3",
+        "note": "正文确认保持联系；具体通话及时间为新增。"
+      }
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notice-d5",
+      "app": "节目短信",
+      "title": "节目组",
+      "text": "看到了吗？我的真心",
+      "time": "今晚 · 已接收",
+      "statusLabel": "保留通知",
+      "target": {
+        "type": "chat",
+        "id": "chat-program",
+        "messageId": "sms-d5"
+      }
+    }
+  ],
+  "clues": [
+    {
+      "id": "sincerity",
+      "title": "五晚的选择",
+      "description": "五晚的收件都伴有“你的x选择了你”。6月6日，炅潣发出的是“我们以后好好相处吧”。"
+    },
+    {
+      "id": "graduation",
+      "title": "毕业照上的字",
+      "description": "今天留下的短记只有“毕业照”和“炅潣，做的好。”"
+    },
+    {
+      "id": "hurt",
+      "title": "停在那里的消息",
+      "description": "旧聊天停在“哥，我们分手吧。”。申惟已读，没有回复。"
+    },
+    {
+      "id": "han",
+      "title": "另一个计划",
+      "description": "南山塔和雨天备用地点都留在清单里；雨中的照片记录了两杯饮料。"
+    },
+    {
+      "id": "music",
+      "title": "继续练",
+      "description": "三个和弦之后，他还想继续学。"
+    },
+    {
+      "id": "taste",
+      "title": "下一次点单",
+      "description": "肋眼，五分熟。他记下了道勋自己的口味。"
+    },
+    {
+      "id": "pig",
+      "title": "行李里的一项",
+      "description": "小猪扩香石被单独记进清单，也出现在照片里。"
+    },
+    {
+      "id": "taro",
+      "title": "被选中的枕头",
+      "description": "同一张旧照片，留下了两种关于 taro 的说法。"
+    },
+    {
+      "id": "london",
+      "title": "那段舞步",
+      "description": "夜里的伦敦，围巾和笨拙的舞步一起留在旧影像中。"
+    },
+    {
+      "id": "coldfood",
+      "title": "一个人吃不完",
+      "description": "旧备忘录只留下“下次别点这么多”和“一个人吃不完”。"
+    }
+  ],
+  "apps": [
+    {
+      "id": "chats",
+      "name": "KakaoTalk",
+      "icon": "talk"
+    },
+    {
+      "id": "photos",
+      "name": "相册",
+      "icon": "photo"
+    },
+    {
+      "id": "notes",
+      "name": "备忘录",
+      "icon": "note"
+    },
+    {
+      "id": "calls",
+      "name": "最近通话",
+      "icon": "call"
+    }
+  ]
+};
+</script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#d9dfda;color:#243b38;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}button{font:inherit;color:inherit;cursor:pointer;border:0}button:focus-visible{outline:3px solid #ce8542;outline-offset:3px}button:active{transform:scale(.98)}.layout{min-height:100dvh;display:flex;align-items:center;justify-content:center;gap:90px;padding:30px}.intro{width:290px}.eyebrow{letter-spacing:5px;font-size:11px;font-weight:700;color:#617971}.intro h1{font-size:54px;letter-spacing:6px;font-weight:400;margin:24px 0}.intro p{line-height:2;color:#61716b;font-size:14px}.rule{width:42px;height:2px;background:#6b8275;margin:30px 0}.small{font-size:11px;color:#6f8076;letter-spacing:2px}.phone{width:390px;height:800px;max-height:94dvh;position:relative;overflow:clip;border:8px solid #23312f;border-radius:48px;background:#f5f5ed;box-shadow:0 28px 65px #31473f35;display:flex;flex-direction:column}.island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:102px;height:25px;background:#23312f;border-radius:18px;z-index:10;pointer-events:none}.status{height:52px;flex-shrink:0;display:flex;justify-content:space-between;padding:18px 22px 0;font-size:11px;font-weight:700;z-index:2}.status span:last-child{font-size:10px}#view{flex:1;min-height:0;overflow:auto;position:relative}.bottom{height:34px;display:flex;justify-content:center;align-items:center;flex-shrink:0}.homebar{background:transparent;padding:12px 60px}.homebar:after{content:'';display:block;width:110px;height:4px;border-radius:5px;background:currentColor}.wall{background:linear-gradient(165deg,#ccd9c6 0%,#a4b7a3 38%,#6a8a7c 70%,#314f49 100%);color:#fff}.wall:before,.wall:after{content:'';position:absolute;inset:33% -20% -10%;background:linear-gradient(140deg,#7b9988,#45695d);clip-path:polygon(0 40%,40% 10%,100% 56%,100% 100%,0 100%);pointer-events:none}.wall:after{inset:50% -25% -10%;background:linear-gradient(145deg,#476c61,#243f3d);clip-path:polygon(0 70%,70% 0,100% 34%,100% 100%,0 100%)}.wall .status,.wall #view,.wall .bottom{z-index:1}.lock{text-align:center;min-height:100%;display:flex;flex-direction:column;padding:28px 22px 12px}.lock-label{font-size:11px;letter-spacing:3px;opacity:.8}.clock{font-size:76px;line-height:1.2;font-weight:200;letter-spacing:-4px;margin-top:14px}.date{font-size:13px;letter-spacing:1px}.lock-owner{font-size:11px;opacity:.7;margin:15px 0 35px}.notification{display:block;text-align:left;width:100%;padding:14px 16px;border-radius:17px;background:#f6faf0d9;backdrop-filter:blur(15px);margin-bottom:9px;color:#2c4940}.notification .meta{display:flex;justify-content:space-between;font-size:10px;color:#6e8075;margin-bottom:8px}.notification strong{font-size:13px}.notification p{font-size:12px;margin:5px 0 0;line-height:1.5}.unlock{margin-top:auto;padding:26px 0 4px;background:none;color:white;font-size:12px;letter-spacing:2px}.unlock b{display:block;font-size:22px;font-weight:400;margin-bottom:8px}.home{padding:26px 23px;min-height:100%;display:flex;flex-direction:column}.greeting{font-size:11px;letter-spacing:3px;opacity:.7}.home h2{font-weight:300;font-size:32px;margin:12px 0}.signature{font-size:12px;opacity:.8}.widget{background:#ffffff1c;border:1px solid #ffffff25;border-radius:20px;padding:18px;margin-top:30px;backdrop-filter:blur(8px)}.widget-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:2px}.progress{height:3px;background:#ffffff30;margin:15px 0 10px}.progress i{display:block;height:100%;background:#eee9cb}.widget p{font-size:11px;opacity:.75;margin:0;line-height:1.7}.appgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:auto;padding-top:40px}.app{background:none;color:white;padding:0;text-align:center;font-size:10px;white-space:nowrap}.app-icon{width:57px;height:57px;display:flex;align-items:center;justify-content:center;border-radius:18px;margin:0 auto 9px;position:relative;box-shadow:0 4px 12px #102d3220}.talk{background:#fee456;color:#382d23}.talk svg{width:33px}.photo{background:#f7f6e9;color:#a77955}.note{background:#f7f0d4;color:#998458}.call{background:#dce8d3;color:#4e785d}.app-icon svg{width:29px;height:29px}.badge{position:absolute;right:-4px;top:-5px;border-radius:10px;background:#cf684f;color:white;min-width:18px;height:18px;padding:2px;font-size:11px}.home-tools{display:flex;justify-content:center;gap:20px;margin-top:35px}.home-tools button{background:#ffffff1a;color:#fff;border-radius:20px;padding:10px 17px;font-size:11px}.header{display:flex;align-items:center;gap:9px;padding:15px 16px 20px;border-bottom:1px solid #e1e6dd}.back{background:none;font-size:28px;line-height:1;padding:0 9px 0 0}.header h2{font-size:20px;font-weight:500;margin:0;flex:1}.header small{font-size:11px;color:#7b8d81}.section-label{font-size:10px;color:#839186;letter-spacing:2px;padding:23px 22px 12px}.row{display:flex;text-align:left;width:100%;gap:13px;padding:17px 22px;background:transparent;align-items:center;border-bottom:1px solid #e6e9e0}.avatar{width:46px;height:46px;flex-shrink:0;border-radius:17px;display:grid;place-items:center;color:white;font-size:18px}.row-main{flex:1;min-width:0}.row strong{display:block;font-size:14px;font-weight:500}.preview{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#859185;font-size:12px;margin-top:7px}.row-end{text-align:right;font-size:10px;color:#8b978b;align-self:flex-start;line-height:1.9}.dot{display:inline-block;background:#c77757;color:white;border-radius:9px;padding:0 6px;font-size:10px}.empty{padding:30px;color:#8b978b;font-size:13px;line-height:1.8}.chat{background:#e3ebe3;min-height:100%;padding-bottom:18px}.chat .header{position:sticky;top:0;background:#e3ebe3;z-index:1}.day{text-align:center;color:#7a8d81;font-size:10px;margin:22px 0}.message{display:flex;align-items:flex-end;gap:7px;margin:14px 18px}.message.self{flex-direction:row-reverse}.bubble{max-width:78%;border-radius:15px 15px 15px 3px;background:#fff;padding:12px 14px;font-size:13px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}.self .bubble{background:#f7de7c;border-radius:15px 15px 3px 15px}.msgtime{font-size:9px;color:#86948a;white-space:nowrap}.readonly{text-align:center;color:#8b998f;font-size:10px;margin-top:28px}.gallery{display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:10px 20px}.photo-card{padding:0;text-align:left;background:none}.art{height:170px;border-radius:14px;display:flex;align-items:end;padding:15px;color:#fff;font-size:11px;background:linear-gradient(145deg,#e1c9a3,#b88862 55%,#637464);position:relative;overflow:hidden}.art:before{content:'';position:absolute;width:70%;height:120%;top:-20%;left:25%;border:1px solid #ffffff45;transform:rotate(25deg)}.art.night{background:linear-gradient(155deg,#bdcabc,#66857b 50%,#344c47)}.photo-card strong{display:block;font-size:12px;font-weight:500;margin:10px 0 4px}.photo-card small{font-size:9px;color:#879589}.photo-detail{padding:22px}.photo-detail .art{height:290px;font-size:20px}.prose{font-size:14px;line-height:2;white-space:pre-wrap;overflow-wrap:anywhere}.timestamp{color:#8c998c;font-size:11px;margin:15px 0 24px}.note-paper{padding:26px;background:linear-gradient(#faf7ea,#f5f2e4);min-height:calc(100% - 70px)}.note-paper h3{font-size:24px;font-weight:400;margin:8px 0}.clue{padding:13px 15px;background:#e4ebdf;border-radius:12px;margin-top:20px;font-size:11px;line-height:1.8}.clue strong{display:block;letter-spacing:1px}.missed{color:#bb6854}.notice-list{padding:18px}.notice-list .notification{background:#e7ecdf}.toast{position:absolute;bottom:47px;left:25px;right:25px;background:#253e36ec;color:#fff;font-size:11px;text-align:center;padding:12px;border-radius:12px;z-index:20;pointer-events:none}.reset{display:block;margin:20px auto;background:none;color:#9a6958;font-size:12px;padding:12px}.detail-avatar{margin:30px auto 15px;width:76px;height:76px;font-size:28px}.call-detail{text-align:center;padding:0 25px}.call-detail h3{font-weight:400}.footer-caption{margin-top:30px;font-size:10px;opacity:.55;text-align:center;letter-spacing:3px}@media(max-width:700px){.layout{padding:0;display:block}.intro{display:none}.phone{width:100%;height:100dvh;max-height:none;border:0;border-radius:0;box-shadow:none}.status{padding-top:max(18px,env(safe-area-inset-top));height:calc(52px + env(safe-area-inset-top))}.bottom{height:calc(30px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom)}.island{display:none}.appgrid{gap:18px}}@media(prefers-reduced-motion:no-preference){#view>div{animation:appear .2s ease}@keyframes appear{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="layout"><aside class="intro"><div class="eyebrow" id="work-eyebrow"></div><h1 id="work-title" style="white-space:pre-line"></h1><p id="work-intro" style="white-space:pre-line"></p><div class="rule"></div><p id="work-invitation" style="white-space:pre-line"></p><div class="small" id="work-edition"></div></aside><main class="phone wall" id="phone" aria-label="手机模拟器"><div class="island"></div><div class="status"><span id="status-time"></span><span id="status-right"></span></div><div id="view"></div><nav class="bottom"><button class="homebar" aria-label="返回桌面"></button></nav><div id="toast" class="toast" hidden role="status"></div></main></div>
+<script>
+'use strict';
+const $=s=>document.querySelector(s), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fresh=()=>({readMessages:[],readNotifications:[],visited:[],clues:[],unlocked:false});
+let state=fresh(), storageOK=true;
+try{const saved=JSON.parse(localStorage.getItem(CONFIG.storageKey));if(saved&&typeof saved==='object'){for(const key of ['readMessages','readNotifications','visited','clues'])if(Array.isArray(saved[key]))state[key]=saved[key].filter(x=>typeof x==='string');state.unlocked=!!saved.unlocked;}}catch{storageOK=false}
+let route={type:'lock'}, history=[],toastTimer;
+const save=()=>{try{localStorage.setItem(CONFIG.storageKey,JSON.stringify(state))}catch{storageOK=false}};
+const add=(key,id)=>{if(!state[key].includes(id))state[key].push(id)};
+const contact=id=>CONFIG.contacts.find(c=>c.id===id)||{name:'未知联系人',initials:'?',color:'#7e8e80'};
+const ordered=chat=>[...chat.messages].sort((a,b)=>a.sequence!==undefined&&b.sequence!==undefined?a.sequence-b.sequence:(a.time||'').localeCompare(b.time||''));
+const recent=items=>[...items].sort((a,b)=>(b.sortKey||b.time||'').localeCompare(a.sortKey||a.time||''));
+const lastActivity=chat=>ordered(chat).at(-1)?.time||'';
+const chatList=()=>[...CONFIG.chats].sort((a,b)=>Number(b.kind==='program')-Number(a.kind==='program')||lastActivity(b).localeCompare(lastActivity(a)));
+for(const [id,key] of [['work-title','title'],['work-eyebrow','eyebrow'],['work-intro','intro'],['work-invitation','invitation'],['work-edition','edition']])$('#'+id).textContent=key==='title'?(CONFIG.work.displayTitle||CONFIG.work.title):CONFIG.work[key];
+document.title=CONFIG.work.title+' · 捡手机剧情模拟器';
+const time=t=>t.slice(11,16), date=t=>t.slice(0,10);
+const unread=chat=>chat.messages.filter(m=>m.unread&&!state.readMessages.includes(m.id)).length;
+const totalUnread=()=>CONFIG.chats.reduce((n,c)=>n+unread(c),0);
+const icon=type=>({talk:'<path d="M5 5h22a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H15l-7 5v-5H5a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4Z" fill="currentColor"/><text x="16" y="18" text-anchor="middle" fill="#fee456" font-size="8" font-weight="bold">TALK</text>',photo:'<rect x="4" y="4" width="24" height="24" rx="4"/><circle cx="12" cy="12" r="2"/><path d="m5 25 8-8 5 5 5-7 5 10"/>',note:'<rect x="5" y="3" width="22" height="27" rx="3"/><path d="M10 11h12M10 17h12M10 23h8"/>',call:'<path d="m9 4 5 6-4 4c2 5 4 7 9 9l4-4 6 5c-2 7-7 7-13 3C8 23 4 17 3 10c0-3 2-5 6-6Z"/>'}[type]||'');
+const svg=type=>`<svg viewBox="0 0 32 34" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${icon(type)}</svg>`;
+const avatar=c=>`<span class="avatar" style="background:${/^#[\da-f]{3,8}$/i.test(c.color)?c.color:'#7e8e80'}">${esc(c.initials)}</span>`;
+function header(title,sub=''){return `<header class="header"><button class="back" data-action="back" aria-label="返回">‹</button><h2>${esc(title)}</h2><small>${esc(sub)}</small></header>`}
+function toast(text){$('#toast').textContent=text;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,2400)}
+function discover(ids=[]){let found=false;ids.forEach(id=>{if(CONFIG.clues.some(c=>c.id===id)&&!state.clues.includes(id)){add('clues',id);found=true}});if(found)toast('发现线索 · 已保存到探索进度')}
+function open(type,id,messageId){history.push({...route,scroll:$('#view').scrollTop});route={type,id,messageId};if(type==='chat'){const c=CONFIG.chats.find(c=>c.id===id);if(c){c.messages.forEach(m=>add('readMessages',m.id));discover(c.clueIds)}}if(['chat','photo','note','call'].includes(type)){add('visited',`${type}:${id}`);const list={photo:CONFIG.photos,note:CONFIG.notes,call:CONFIG.calls}[type];if(list)discover(list.find(x=>x.id===id)?.clueIds)}save();render()}
+function unlock(){state.unlocked=true;save();history=[];route={type:'home'};render()}
+function back(){route=history.pop()||{type:'home'};render();$('#view').scrollTop=route.scroll||0}
+function notification(n){return `<button class="notification" data-action="notification" data-id="${esc(n.id)}"><span class="meta"><span>${esc(n.app)}${n.statusLabel?' · '+esc(n.statusLabel):''}${state.readNotifications.includes(n.id)?' · 已查看':''}</span><span>${esc(n.time)}</span></span><strong>${esc(n.title)}</strong><p>${esc(n.text)}</p></button>`}
+function cluesHTML(ids=[]){return ids.filter(id=>state.clues.includes(id)).map(id=>{const c=CONFIG.clues.find(c=>c.id===id);return c?`<div class="clue"><strong>已记录 · ${esc(c.title)}</strong>${esc(c.description)}</div>`:''}).join('')}
+function render(){
+const v=$('#view'),t=route.type;$('#phone').classList.toggle('wall',['lock','home'].includes(t));$('#status-time').textContent=CONFIG.device.time;$('#status-right').textContent=`${CONFIG.device.carrier} ▂▄▆ · ${CONFIG.device.battery}`;
+let html='';
+if(t==='lock')html=`<div class="lock"><div class="lock-label">${esc(CONFIG.device.lockHint)}</div><div class="clock">${esc(CONFIG.device.time)}</div><div class="date">${esc(CONFIG.device.date)}</div><div class="lock-owner">${esc(CONFIG.owner.name)}的手机 · ${esc(CONFIG.device.wallpaperLabel)}</div>${CONFIG.notifications.slice(0,2).map(notification).join('')}<button class="unlock" data-action="unlock"><b>⌃</b>向上滑动解锁 · 也可点击</button></div>`;
+else if(t==='home'){const total=CONFIG.chats.length+CONFIG.photos.length+CONFIG.notes.length+CONFIG.calls.length;const count=state.visited.length;html=`<div class="home"><div class="greeting">${esc(CONFIG.device.date)}</div><h2>${esc(CONFIG.owner.name)}的手机</h2><div class="signature">${esc(CONFIG.owner.signature)}</div><button class="widget" data-open="progress" style="text-align:left;color:inherit"><div class="widget-top"><span>探索进度</span><span>${count} / ${total}</span></div><div class="progress"><i style="width:${total?Math.min(count/total*100,100):0}%"></i></div><p>已记录 ${state.clues.length} 条线索 · 点击查看<br>每一次查看，都会留在这里。</p></button><div class="appgrid">${CONFIG.apps.map(a=>`<button class="app" data-open="${esc(a.id)}"><span class="app-icon ${esc(a.icon)}">${svg(a.icon)}${a.id==='chats'&&totalUnread()?`<span class="badge">${totalUnread()}</span>`:''}</span>${esc(a.name)}</button>`).join('')}</div><div class="home-tools"><button data-open="notifications">通知 ${CONFIG.notifications.filter(n=>!state.readNotifications.includes(n.id)).length||''}</button><button data-action="lock">锁屏</button></div><div class="footer-caption">慢慢探索 · 自由选择</div></div>`}
+else if(t==='chats'){
+html=header('KakaoTalk',`${CONFIG.chats.length} 个对话`)+`<div class="section-label">CHATS / 聊天与节目记录</div>`+chatList().map(c=>{
+ const who=contact(c.contactId),last=ordered(c).at(-1);
+ const stamp=c.kind==='program'?c.listTime:c.kind==='archive'?'历史记录':last?.time.replace('T',' ').slice(5,16)||'';
+ return `<button class="row" data-open="chat" data-id="${esc(c.id)}">${avatar(who)}<span class="row-main"><strong>${esc(who.name)}</strong><div class="preview">${esc(c.preview||last?.text||'暂无消息')}</div>${c.kind==='program'?`<div class="preview">${esc(who.subtitle)}</div>`:''}</span><span class="row-end">${esc(stamp)}<br>${unread(c)?`<span class="dot">${unread(c)}</span>`:''}</span></button>`;
+}).join('');
+}
+else if(t==='chat'){
+ const c=CONFIG.chats.find(x=>x.id===route.id);
+ if(c){
+  let prev='';html=`<div class="chat">${header(contact(c.contactId).name,c.kind==='program'?'节目短信':'只读记录')}`;
+  if(c.notice)html+=`<div class="readonly" style="padding:0 18px;margin-top:18px" data-role="chat-notice">${esc(c.notice)}</div>`;
+  if(c.context)html+=`<div class="readonly" style="padding:0 22px;line-height:1.8">${esc(c.context)}</div>`;
+  html+=ordered(c).map(m=>{
+   const d=m.dateLabel||date(m.time),day=d!==prev?`<div class="day">${esc(d)}</div>`:'';prev=d;
+   return day+`<div class="message ${m.sender==='self'?'self':''}" id="${esc(m.id)}" data-message-type="${esc(m.messageType||'chat')}"><div class="bubble">${esc(m.text)}</div><span class="msgtime">${m.time?esc(time(m.time)):''}${m.receipt?`<br>${esc(m.receipt)}`:''}</span></div>`;
+  }).join('');
+  html+=`<div style="padding:0 18px">${cluesHTML(c.clueIds)}</div><div class="readonly">${esc(c.footer||'已保存的聊天记录 · 无法发送消息')}</div></div>`;
+ }
+}
+else if(t==='photos')html=header('相册',`${CONFIG.photos.length} 张`)+`<div class="section-label">MOMENTS / 片刻</div><div class="gallery">`+recent(CONFIG.photos).map(p=>`<button class="photo-card" data-open="photo" data-id="${esc(p.id)}"><span class="art ${p.palette==='night'?'night':''}">${esc(p.title)}</span><strong>${esc(p.title)}</strong><small>${esc(p.date)}</small></button>`).join('')+'</div>';
+else if(t==='photo'){const p=CONFIG.photos.find(x=>x.id===route.id);if(p)html=header(p.title)+`<div class="photo-detail"><div class="art ${p.palette==='night'?'night':''}" role="img" aria-label="${esc(p.description)}">${esc(p.title)}</div><div class="timestamp">${esc(p.date)} · 文字照片</div><div class="prose">${esc(p.description)}</div>${cluesHTML(p.clueIds)}</div>`}
+else if(t==='notes')html=header('备忘录',`${CONFIG.notes.length} 篇`)+`<div class="section-label">NOTES / 日常记录</div>`+recent(CONFIG.notes).map(n=>`<button class="row" data-open="note" data-id="${esc(n.id)}"><span class="row-main"><strong>${esc(n.title)}</strong><div class="preview">${esc(n.body.replace(/\n/g,' · '))}</div><div class="timestamp" style="margin:9px 0 0">${esc(n.date)}</div></span><span>›</span></button>`).join('');
+else if(t==='note'){const n=CONFIG.notes.find(x=>x.id===route.id);if(n)html=header('备忘录')+`<article class="note-paper"><h3>${esc(n.title)}</h3><div class="timestamp">${esc(n.date)}</div><div class="prose">${esc(n.body)}</div>${cluesHTML(n.clueIds)}</article>`}
+else if(t==='calls')html=header('最近通话')+`<div class="section-label">RECENTS / 通话记录</div>`+recent(CONFIG.calls).map(c=>`<button class="row" data-open="call" data-id="${esc(c.id)}">${avatar(contact(c.contactId))}<span class="row-main"><strong class="${c.missed?'missed':''}">${esc(contact(c.contactId).name)}</strong><div class="preview">${esc(c.type)}</div></span><span class="row-end">${esc(c.time)}<br>ⓘ</span></button>`).join('');
+else if(t==='call'){const c=CONFIG.calls.find(x=>x.id===route.id);if(c)html=header('通话详情')+`<div class="call-detail">${avatar(contact(c.contactId)).replace('class="avatar"','class="avatar detail-avatar"')}<h3>${esc(contact(c.contactId).name)}</h3><div class="timestamp">${esc(c.time)}</div><p class="${c.missed?'missed':''}">${esc(c.type)}</p><div class="prose">${esc(c.detail)}</div><div class="readonly">仅查看历史记录，不会拨出电话</div>${cluesHTML(c.clueIds)}</div>`}
+else if(t==='notifications')html=header('通知中心')+`<div class="notice-list">${CONFIG.notifications.map(notification).join('')||'<div class="empty">暂无通知</div>'}</div>`;
+else if(t==='progress')html=header('探索进度',`${state.clues.length} 条线索`)+`<div class="section-label">已发现的线索</div><div style="padding:0 22px">${cluesHTML(state.clues)||'<p class="empty">还没有发现线索，按自己的顺序探索手机吧。</p>'}</div><div class="section-label">查看记录 · ${state.visited.length} 项</div>`+state.visited.map(key=>{const [type,id]=key.split(':');const item=({chat:CONFIG.chats,photo:CONFIG.photos,note:CONFIG.notes,call:CONFIG.calls}[type]||[]).find(x=>x.id===id);return item?`<button class="row" data-open="${esc(type)}" data-id="${esc(id)}"><span class="row-main"><strong>${esc(item.title||contact(item.contactId).name)}</strong><div class="preview">${({chat:'聊天',photo:'相册',note:'备忘录',call:'通话'})[type]} · 已查看</div></span><span>›</span></button>`:''}).join('')+`<button class="reset" data-action="reset">重置本机探索进度</button><div class="empty">${storageOK?'进度自动保存在当前浏览器中。':'浏览器存储不可用，进度仅保留在本次页面中。'}</div>`;
+v.style.touchAction=t==='lock'?'pan-x pan-down':'auto';
+v.innerHTML=html||header('内容不存在')+'<div class="empty">请返回检查 CONFIG 的内容引用。</div>';v.scrollTop=0;
+if(t==='chat'&&CONFIG.chats.find(c=>c.id===route.id)?.kind==='program'){const target=route.messageId?document.getElementById(route.messageId):v.querySelector('.message:last-of-type');if(route.messageId&&target)v.scrollTop=target.offsetTop-(v.querySelector('.header')?.offsetHeight||0)-12;else v.scrollTop=v.scrollHeight;}
+}
+$('#phone').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.classList.contains('homebar')){if(route.type==='lock')unlock();else{history=[];route={type:'home'};render()}return}const a=b.dataset.action;if(a==='unlock')unlock();else if(a==='back')back();else if(a==='lock'){history=[];route={type:'lock'};render()}else if(a==='notification'){const n=CONFIG.notifications.find(x=>x.id===b.dataset.id);if(!n)return;add('readNotifications',n.id);if(route.type==='lock'){unlock()}open(n.target.type,n.target.id,n.target.messageId)}else if(a==='reset'){if(confirm('清除这部手机在当前浏览器中的已读状态、线索和探索进度？')){state=fresh();save();history=[];route={type:'lock'};render();toast('探索进度已重置')}}else if(b.dataset.open)open(b.dataset.open,b.dataset.id)});
+let swipe=null;$('#view').addEventListener('pointerdown',e=>{if(route.type==='lock')swipe={x:e.clientX,y:e.clientY}});$('#view').addEventListener('pointerup',e=>{if(swipe&&route.type==='lock'&&swipe.y-e.clientY>65&&Math.abs(swipe.x-e.clientX)<100)unlock();swipe=null});$('#view').addEventListener('pointercancel',()=>swipe=null);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(route.type!=='lock')back()}if(e.key==='ArrowUp'&&route.type==='lock')unlock()});
+render();
+</script>
+</body>
+</html>
