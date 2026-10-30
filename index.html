@@ -2,19 +2,21 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="application-version" content="20261030-r3">
+<meta name="theme-color" content="#253c52">
 <title>大雨落下时 · 捡手机剧情模拟器</title>
 <script>
 // 编辑入口：所有人物、剧情与线索均从 CONFIG 读取。id 稳定且唯一。
 // source 仅用于作者审阅；日常新增不等于正篇事实，未定日期不伪装为精确时间。
 const CONFIG = {
   "assets": {
-    "wallpaper": "assets/wallpaper-9126.jpg",
-    "lockWallpaper": "assets/wallpaper-9126.jpg",
+    "wallpaper": "assets/wallpaper-9126.jpg?v=20261030-r3",
+    "lockWallpaper": "assets/wallpaper-9126.jpg?v=20261030-r3",
     "wallpaperPosition": "72% 75%",
     "lockWallpaperPosition": "72% 75%",
     "avatars": {
-      "shin": "assets/avatar-shin-9118.jpg",
-      "self": "assets/avatar-self-9123.jpg",
+      "shin": "assets/avatar-shin-9118.jpg?v=20261030-r3",
+      "self": "assets/avatar-self-9123.jpg?v=20261030-r3",
       "mother": "",
       "workmate": "",
       "production": ""
@@ -3841,130 +3843,154 @@ const CONFIG = {
   ],
   "notes": [
     {
-      "id": "note-import-01",
-      "sequence": 1,
-      "title": "第一次认真写下他的名字",
-      "date": "正式交往前",
-      "body": "申惟。\n\n好像只要把名字打出来，就能知道自己到底在想什么。\n结果盯着看了半天，还是不知道。\n\n下次见面正常一点。\n尤其不要一听见他叫“炅潣”就立刻回头。",
+      "id": "note-import-18",
+      "sequence": 18,
+      "title": "雨停了吗",
+      "date": "2033年6月6日 · 当晚心动短信之后",
+      "body": "今天下了很久的雨。\n\n韩振没有追问我不想说的事。\n跟他待在一起的时候，我能暂时不用急着解释自己。\n\n晚上看见那条短信，还是愣了很久。\n\n我不想只因为愧疚做选择。\n也不想只因为害怕再受伤，就假装自己什么感觉都没有。\n\n先睡一觉。\n明天再想。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 1,
-        "stage": "正式交往前",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 18,
+        "stage": "雨天约会与当晚心动短信之后 · 最新",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "today",
+      "timelineOrder": 18,
+      "datePrecision": "day",
+      "eventDate": "2033-06-06"
     },
     {
-      "id": "note-import-02",
-      "sequence": 2,
-      "title": "搬东西",
-      "date": "大学时期，常去申惟住处",
-      "body": "下次带过去：\n□ 蓝色小烛台\n□ 充电线\n□ 借他的那本书\n□ 上次落在沙发旁边的耳机\n\n岛台已经快放不下了。\n他说要给我腾位置。\n\n我怀疑他说的不只是岛台。",
-      "clueIds": [],
+      "id": "note-import-17",
+      "sequence": 17,
+      "title": "从X-room出来",
+      "date": "2033年6月6日 · X-room之后",
+      "body": "那张便签还在。\n沙发还是原来的位置。\n连我自己都快忘了的小东西，他也留着。\n\n原来毕业典礼那天他去了。\n原来那条消息，他不是没有想过回复。\n\n我现在知道了这些。\n可我当时等过的那些夜晚，也是真的。",
+      "clueIds": [
+        "graduation"
+      ],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 2,
-        "stage": "大学时期，常去申惟住处",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 17,
+        "stage": "X-room之后",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "today",
+      "timelineOrder": 17,
+      "datePrecision": "day",
+      "eventDate": "2033-06-06"
     },
     {
-      "id": "note-import-03",
-      "sequence": 3,
-      "title": "10月2日",
-      "date": "2026年10月2日 · 20岁生日、正式告白当晚",
-      "body": "他说还缺一个正式的告白。\n\n我以为自己早就知道答案，结果他拿出戒指的时候，还是忘了刚才许的愿是什么。\n\n戒指叫“天堂的爱”。\n他的那只叫“猫咪的尾巴”。\n\n这名字听起来很像哥会偷偷挑很久、当面却装作很随意的东西。",
+      "id": "note-import-16",
+      "sequence": 16,
+      "title": "不必回复",
+      "date": "回首尔工作后 · 参加节目之前",
+      "body": "有时候听见某首歌，还是会想起他。\n不代表我想回头。\n也不代表那几年可以当作没发生。\n\n伯母问我什么时候去吃饭。\n我说等忙完。\n\n这句话以前总是哥说。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 3,
-        "stage": "2026年10月2日 · 20岁生日、正式告白当晚",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 16,
+        "stage": "分手后、参加节目之前",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "seoul",
+      "timelineOrder": 16,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-04",
-      "sequence": 4,
-      "title": "电影清单",
-      "date": "交往初期",
-      "body": "□ 上次看到一半睡着的那部，重新看完\n□ 哥说结尾很好的那部，暂时不看剧透\n□ 伯母推荐的老电影\n□ 去电影院看一场真正不会被工作电话打断的\n\n备注：如果申惟又在前二十分钟睡着，不准他说电影不好看。",
+      "id": "note-import-15",
+      "sequence": 15,
+      "title": "工作室备忘",
+      "date": "分手后 · 回首尔开录音室",
+      "body": "周一：确认设备状态\n周二：检查上一版尾音\n周三：别忘了吃午饭\n本周：整理备份，不要只放在一块硬盘里\n\n同事说我调一个音像在修东西。\n至少东西坏了，通常能找出是哪一步出了问题。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 4,
-        "stage": "交往初期",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 15,
+        "stage": "分手后，回首尔开录音室",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "seoul",
+      "timelineOrder": 15,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-05",
-      "sequence": 5,
-      "title": "家里",
-      "date": "一起生活、收养taro之后",
-      "body": "taro的药：按医生说的时间给。\n地板上别放零碎东西，它跑起来不会看路。\n蜡烛和精油先收进柜子里。\n门口那盏灯记得开。\n\n以前觉得家里放得最多的是我的东西。\n现在想想，是我们三个生活过的痕迹。",
-      "clueIds": [],
+      "id": "note-import-14",
+      "sequence": 14,
+      "title": "没有用上的清单",
+      "date": "秘密回首尔后 · 没等到他那一晚之后",
+      "body": "屋子整理了。\ntaro见到我很高兴。\n菜已经凉了。\n\n打电话的时候，原本想说“你猜我在哪儿”。\n后来一次也没说出口。\n\n“等他回来”这一项，不知道该怎么划掉。",
+      "clueIds": [
+        "coldfood"
+      ],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 5,
-        "stage": "一起生活、收养taro之后",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 14,
+        "stage": "秘密回家、却没等到申惟之后",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "distance",
+      "timelineOrder": 14,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-06",
-      "sequence": 6,
-      "title": "taro观察记录",
-      "date": "taro康复期间",
-      "body": "今天愿意多走几步。\n申惟一叫它，它就装作听不见；包装袋一响，跑得比谁都快。\n\n它睡觉喜欢贴着沙发左边。\n哥说是因为那里舒服。\n我觉得是因为那里离零食柜最近。\n\n下次复诊的问题：\n□ 现在的活动量合适吗？\n□ 后腿有没有需要特别注意的地方？",
+      "id": "note-import-13",
+      "sequence": 13,
+      "title": "回家那天的清单",
+      "date": "夏季学期结束 · 秘密回首尔之前",
+      "body": "□ 机票\n□ 不告诉哥\n□ 回家先看taro\n□ 把屋子整理一下\n□ 点我们以前喜欢吃的菜\n□ 等他回来\n\n别把惊喜提前说漏嘴。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 6,
-        "stage": "taro康复期间",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 13,
+        "stage": "夏季学期结束，秘密返回首尔之前",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "distance",
+      "timelineOrder": 13,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-07",
-      "sequence": 7,
-      "title": "不开口就不会实现吗",
-      "date": "2029年冬天 · 得知可能赴英后",
-      "body": "他们说，毕业之后要去英国。\n\n我明明已经想好要在首尔做什么了。\n附近的录音室、我们的房子、哥下班后要走的那段路，连taro的东西以后放哪里都想过。\n\n哥说会来找我。\n我相信他。\n\n但我不想靠“以后会来”才敢走。",
+      "id": "note-import-12",
+      "sequence": 12,
+      "title": "不要再发很长的消息",
+      "date": "异地关系后期 · 反复等回复之后",
+      "body": "写了三段，又全删了。\n\n其实只是想说：\n如果今天不能打电话，告诉我一声。\n如果这周也不行，告诉我下周哪天可以。\n\n不是一定要他现在放下工作。\n我想要一个回答。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 7,
-        "stage": "2029年冬天 · 得知可能赴英后",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 12,
+        "stage": "异地关系后期",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "distance",
+      "timelineOrder": 12,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-08",
-      "sequence": 8,
-      "title": "行李箱",
-      "date": "赴英前",
-      "body": "证件\n录音用的硬盘\n常穿的外套\n哥塞进来的药\n给伯母买的东西\n\ntaro刚才一直围着箱子转。\n它不知道“很快回来”到底是多久。\n其实我也不知道。",
+      "id": "note-import-11",
+      "sequence": 11,
+      "title": "时差",
+      "date": "异地关系后期 · 联系渐少时",
+      "body": "首尔的早上，是我准备睡的时候。\n我有空的时候，他可能正忙。\n\n下次别问“今晚能不能视频”了。\n先问他哪天有空，直接约一个时间。\n\n可是以前不用约的。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 8,
-        "stage": "赴英前",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
-    },
-    {
-      "id": "note-import-09",
-      "sequence": 9,
-      "title": "伦敦：想去的地方",
-      "date": "伦敦留学期间、申惟第一次探访之前",
-      "body": "唱片店：转角那家，周末开门晚。\n古着店：橱窗里有件很好看的外套。\n河边：天气好的时候走一走。\n海德公园：有天鹅。\n\n等哥来的时候带他去。\n\n这份清单改了好多次。\n不知道什么时候才用得上。",
-      "clueIds": [],
-      "source": {
-        "kind": "用户提供的游戏备忘录",
-        "itemNumber": 9,
-        "stage": "伦敦留学期间、申惟第一次探访之前",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 11,
+        "stage": "异地关系后期",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "distance",
+      "timelineOrder": 11,
+      "datePrecision": "stage"
     },
     {
       "id": "note-import-10",
@@ -3977,124 +4003,175 @@ const CONFIG = {
         "kind": "用户提供的游戏备忘录",
         "itemNumber": 10,
         "stage": "申惟第一次到伦敦之后",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "distance",
+      "timelineOrder": 10,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-11",
-      "sequence": 11,
-      "title": "时差",
-      "date": "异地关系后期",
-      "body": "首尔的早上，是我准备睡的时候。\n我有空的时候，他可能正忙。\n\n下次别问“今晚能不能视频”了。\n先问他哪天有空，直接约一个时间。\n\n可是以前不用约的。",
+      "id": "note-import-09",
+      "sequence": 9,
+      "title": "伦敦：想去的地方",
+      "date": "伦敦留学初期 · 第一次探访前",
+      "body": "唱片店：转角那家，周末开门晚。\n古着店：橱窗里有件很好看的外套。\n河边：天气好的时候走一走。\n海德公园：有天鹅。\n\n等哥来的时候带他去。\n\n这份清单改了好多次。\n不知道什么时候才用得上。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 11,
-        "stage": "异地关系后期",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 9,
+        "stage": "伦敦留学期间、申惟第一次探访之前",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "distance",
+      "timelineOrder": 9,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-12",
-      "sequence": 12,
-      "title": "不要再发很长的消息",
-      "date": "异地关系后期",
-      "body": "写了三段，又全删了。\n\n其实只是想说：\n如果今天不能打电话，告诉我一声。\n如果这周也不行，告诉我下周哪天可以。\n\n不是一定要他现在放下工作。\n我想要一个回答。",
+      "id": "note-import-08",
+      "sequence": 8,
+      "title": "行李箱",
+      "date": "2029年冬天之后 · 赴英前",
+      "body": "证件\n录音用的硬盘\n常穿的外套\n哥塞进来的药\n给伯母买的东西\n\ntaro刚才一直围着箱子转。\n它不知道“很快回来”到底是多久。\n其实我也不知道。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 12,
-        "stage": "异地关系后期",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 8,
+        "stage": "赴英前",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "departure",
+      "timelineOrder": 8,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-13",
-      "sequence": 13,
-      "title": "回家那天的清单",
-      "date": "夏季学期结束，秘密返回首尔之前",
-      "body": "□ 机票\n□ 不告诉哥\n□ 回家先看taro\n□ 把屋子整理一下\n□ 点我们以前喜欢吃的菜\n□ 等他回来\n\n别把惊喜提前说漏嘴。",
+      "id": "note-import-07",
+      "sequence": 7,
+      "title": "不开口就不会实现吗",
+      "date": "2029年冬天 · 得知赴英安排后",
+      "body": "他们说，毕业之后要去英国。\n\n我明明已经想好要在首尔做什么了。\n附近的录音室、我们的房子、哥下班后要走的那段路，连taro的东西以后放哪里都想过。\n\n哥说会来找我。\n我相信他。\n\n但我不想靠“以后会来”才敢走。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 13,
-        "stage": "夏季学期结束，秘密返回首尔之前",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 7,
+        "stage": "2029年冬天 · 得知可能赴英后",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "winter",
+      "timelineOrder": 7,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-14",
-      "sequence": 14,
-      "title": "没有用上的清单",
-      "date": "秘密回家、却没等到申惟之后",
-      "body": "屋子整理了。\ntaro见到我很高兴。\n菜已经凉了。\n\n打电话的时候，原本想说“你猜我在哪儿”。\n后来一次也没说出口。\n\n“等他回来”这一项，不知道该怎么划掉。",
-      "clueIds": [
-        "coldfood"
-      ],
-      "source": {
-        "kind": "用户提供的游戏备忘录",
-        "itemNumber": 14,
-        "stage": "秘密回家、却没等到申惟之后",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
-    },
-    {
-      "id": "note-import-15",
-      "sequence": 15,
-      "title": "工作室备忘",
-      "date": "分手后，回首尔开录音室",
-      "body": "周一：确认设备状态\n周二：检查上一版尾音\n周三：别忘了吃午饭\n本周：整理备份，不要只放在一块硬盘里\n\n同事说我调一个音像在修东西。\n至少东西坏了，通常能找出是哪一步出了问题。",
+      "id": "note-import-06",
+      "sequence": 6,
+      "title": "taro观察记录",
+      "date": "taro 康复期间 · 后续观察",
+      "body": "今天愿意多走几步。\n申惟一叫它，它就装作听不见；包装袋一响，跑得比谁都快。\n\n它睡觉喜欢贴着沙发左边。\n哥说是因为那里舒服。\n我觉得是因为那里离零食柜最近。\n\n下次复诊的问题：\n□ 现在的活动量合适吗？\n□ 后腿有没有需要特别注意的地方？",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 15,
-        "stage": "分手后，回首尔开录音室",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 6,
+        "stage": "taro康复期间",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "home",
+      "timelineOrder": 6,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-16",
-      "sequence": 16,
-      "title": "不必回复",
-      "date": "分手后、参加节目之前",
-      "body": "有时候听见某首歌，还是会想起他。\n不代表我想回头。\n也不代表那几年可以当作没发生。\n\n伯母问我什么时候去吃饭。\n我说等忙完。\n\n这句话以前总是哥说。",
+      "id": "note-import-05",
+      "sequence": 5,
+      "title": "家里",
+      "date": "收养 taro 后 · 开始一起照顾它",
+      "body": "taro的药：按医生说的时间给。\n地板上别放零碎东西，它跑起来不会看路。\n蜡烛和精油先收进柜子里。\n门口那盏灯记得开。\n\n以前觉得家里放得最多的是我的东西。\n现在想想，是我们三个生活过的痕迹。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 16,
-        "stage": "分手后、参加节目之前",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 5,
+        "stage": "一起生活、收养taro之后",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "home",
+      "timelineOrder": 5,
+      "datePrecision": "stage"
     },
     {
-      "id": "note-import-17",
-      "sequence": 17,
-      "title": "从X-room出来",
-      "date": "X-room之后",
-      "body": "那张便签还在。\n沙发还是原来的位置。\n连我自己都快忘了的小东西，他也留着。\n\n原来毕业典礼那天他去了。\n原来那条消息，他不是没有想过回复。\n\n我现在知道了这些。\n可我当时等过的那些夜晚，也是真的。",
-      "clueIds": [
-        "graduation"
-      ],
-      "source": {
-        "kind": "用户提供的游戏备忘录",
-        "itemNumber": 17,
-        "stage": "X-room之后",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
-    },
-    {
-      "id": "note-import-18",
-      "sequence": 18,
-      "title": "雨停了吗",
-      "date": "雨天约会与当晚心动短信之后 · 最新",
-      "body": "今天下了很久的雨。\n\n韩振没有追问我不想说的事。\n跟他待在一起的时候，我能暂时不用急着解释自己。\n\n晚上看见那条短信，还是愣了很久。\n\n我不想只因为愧疚做选择。\n也不想只因为害怕再受伤，就假装自己什么感觉都没有。\n\n先睡一觉。\n明天再想。",
+      "id": "note-import-04",
+      "sequence": 4,
+      "title": "电影清单",
+      "date": "正式交往初期",
+      "body": "□ 上次看到一半睡着的那部，重新看完\n□ 哥说结尾很好的那部，暂时不看剧透\n□ 伯母推荐的老电影\n□ 去电影院看一场真正不会被工作电话打断的\n\n备注：如果申惟又在前二十分钟睡着，不准他说电影不好看。",
       "clueIds": [],
       "source": {
         "kind": "用户提供的游戏备忘录",
-        "itemNumber": 18,
-        "stage": "雨天约会与当晚心动短信之后 · 最新",
-        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。"
-      }
+        "itemNumber": 4,
+        "stage": "交往初期",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "early",
+      "timelineOrder": 4,
+      "datePrecision": "stage"
+    },
+    {
+      "id": "note-import-03",
+      "sequence": 3,
+      "title": "10月2日",
+      "date": "2026年10月2日 · 20岁生日、正式告白当晚",
+      "body": "他说还缺一个正式的告白。\n\n我以为自己早就知道答案，结果他拿出戒指的时候，还是忘了刚才许的愿是什么。\n\n戒指叫“天堂的爱”。\n他的那只叫“猫咪的尾巴”。\n\n这名字听起来很像哥会偷偷挑很久、当面却装作很随意的东西。",
+      "clueIds": [],
+      "source": {
+        "kind": "用户提供的游戏备忘录",
+        "itemNumber": 3,
+        "stage": "2026年10月2日 · 20岁生日、正式告白当晚",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "birthday",
+      "timelineOrder": 3,
+      "datePrecision": "day",
+      "eventDate": "2026-10-02"
+    },
+    {
+      "id": "note-import-02",
+      "sequence": 2,
+      "title": "搬东西",
+      "date": "大学时期 · 正式告白前",
+      "body": "下次带过去：\n□ 蓝色小烛台\n□ 充电线\n□ 借他的那本书\n□ 上次落在沙发旁边的耳机\n\n岛台已经快放不下了。\n他说要给我腾位置。\n\n我怀疑他说的不只是岛台。",
+      "clueIds": [],
+      "source": {
+        "kind": "用户提供的游戏备忘录",
+        "itemNumber": 2,
+        "stage": "大学时期，常去申惟住处",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "before",
+      "timelineOrder": 2,
+      "datePrecision": "stage"
+    },
+    {
+      "id": "note-import-01",
+      "sequence": 1,
+      "title": "第一次认真写下他的名字",
+      "date": "正式交往前",
+      "body": "申惟。\n\n好像只要把名字打出来，就能知道自己到底在想什么。\n结果盯着看了半天，还是不知道。\n\n下次见面正常一点。\n尤其不要一听见他叫“炅潣”就立刻回头。",
+      "clueIds": [],
+      "source": {
+        "kind": "用户提供的游戏备忘录",
+        "itemNumber": 1,
+        "stage": "正式交往前",
+        "note": "李炅潣写给自己的私人备忘录，逐字导入；只有明确日期精确显示，其余仅用相对阶段，不虚构年份。",
+        "timelineNote": "按正文事件链及作者确认的日期编排；timelineOrder仅表示事件先后，不是精确时间。EP10 X-room与EP11雨天约会/短信发生在同一录制日D5（2033-06-06），前者在后者之前。夏季返首尔不套用旧聊天游戏编排的12月日期。"
+      },
+      "group": "before",
+      "timelineOrder": 1,
+      "datePrecision": "stage"
     }
   ],
   "calls": [
@@ -4259,6 +4336,11 @@ const CONFIG = {
         "name": "探索记录",
         "icon": "progress",
         "className": "progress-icon"
+      },
+      {
+        "id": "clock",
+        "name": "时钟",
+        "icon": "clock"
       }
     ],
     "placeholders": {
@@ -4270,7 +4352,55 @@ const CONFIG = {
         "title": "相机",
         "text": "相机未开启。已保存的内容可在相册中查看。"
       }
-    }
+    },
+    "release": "20261030-r3",
+    "lockDate": "6月6日",
+    "homeSearch": "搜索 App",
+    "photoWidgetLabel": "照片",
+    "weatherWidget": {
+      "location": "首尔",
+      "temperature": "—°",
+      "summary": "天气暂不可用",
+      "detail": "未连接天气服务"
+    },
+    "noteGroups": [
+      {
+        "id": "today",
+        "title": "今天"
+      },
+      {
+        "id": "seoul",
+        "title": "回到首尔后"
+      },
+      {
+        "id": "distance",
+        "title": "异地时期"
+      },
+      {
+        "id": "departure",
+        "title": "赴英之前"
+      },
+      {
+        "id": "winter",
+        "title": "2029年冬天"
+      },
+      {
+        "id": "home",
+        "title": "一起生活时"
+      },
+      {
+        "id": "early",
+        "title": "交往初期"
+      },
+      {
+        "id": "birthday",
+        "title": "2026年10月"
+      },
+      {
+        "id": "before",
+        "title": "正式交往前"
+      }
+    ]
   }
 };
 </script>
@@ -4293,6 +4423,21 @@ body{background:#141922;color:#20252c;font-family:-apple-system,BlinkMacSystemFo
 .chat-filters{display:flex;gap:7px;padding:0 18px 12px;font-size:12px;color:#777}.chat-filters button{border-radius:19px;padding:8px 13px;background:#f3f3f3}.chat-filters .selected{background:#222;color:#fff}.chat-list-page .row:after{display:none}.chat-list-page .row{min-height:88px}.chat-list-page .avatar,.message .avatar{border-radius:36%}.chat-list-nav{background:#fff;border:0;height:56px}.chat-list-nav button{flex-direction:column;gap:3px;font-size:9px}.chat-list-nav svg{width:23px;height:23px}.chat .header h2{text-align:center}.chat .header{min-height:50px}.chat,.chat .header,.phone[data-mode="chat"] .status,.phone[data-mode="chat"] .bottom{background:#abc1d0}.bubble{font-size:14px;line-height:1.5;border-radius:13px;padding:9px 11px;box-shadow:none}.self .bubble{background:#fee500;border-radius:13px}.first-message:not(.self) .bubble-line .bubble{border-top-left-radius:3px}.self.first-message .bubble{border-top-right-radius:3px}.message{margin-top:5px;margin-bottom:5px}.message.first-message{margin-top:17px}.sender-name{font-size:11px;margin-bottom:5px}.msgtime{font-size:9px}.day{margin:19px 0 23px}.day span{background:#6c829263;color:#fff;padding:6px 13px;border-radius:20px}.readonly-composer{background:#fff;min-height:51px}.readonly-composer span.composer-label{background:#f2f2f2;border:0;font-size:12px;color:#a1a1a5}.phone[data-mode="chat"] .bottom{background:#fff}
 .dock{background:#e4edff3b;border:1px solid #ffffff55;box-shadow:inset 0 1px 0 #ffffff66,0 6px 20px #00000012;backdrop-filter:blur(30px) saturate(1.5);-webkit-backdrop-filter:blur(30px) saturate(1.5);border-radius:33px}.sys-widget{border-radius:27px}.app-icon{border:1px solid #ffffff24;box-shadow:inset 0 1px 0 #ffffff44,0 3px 7px #0002}.lock{padding-top:13px}.lock-label svg{width:17px;height:17px}.lock .date{font-size:17px;letter-spacing:0;margin-top:12px;font-weight:500}.lock .clock{font-size:89px;font-weight:650;letter-spacing:-5px;line-height:1.1;margin-top:0;text-shadow:0 2px 15px #ffffff18}.lock-owner{height:25px;margin:0}.notification{background:#edf2f56e;border:1px solid #ffffff55;color:#182531;box-shadow:inset 0 1px 0 #ffffff44;backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);border-radius:24px}.notification .meta{color:#344651}.unlock{font-size:12px;letter-spacing:0;text-shadow:0 1px 4px #0005}.unlock b{font-size:24px}
 @media(max-width:350px){.notes-top{padding:7px 13px 12px}.notes-scroll{padding-left:13px;padding-right:13px}.note-paper .prose{font-size:14px}.bubble{font-size:13px}.lock .clock{font-size:75px}}
+/* R3: reference layout, grouped reverse chronology, stable local image loading. */
+.phone{--battery-number:#fff}.wall{--battery-number:#314a61}
+.home{padding:25px 23px 0;gap:0}.home-grid.appgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,minmax(76px,1fr));gap:15px 14px;height:clamp(338px,53dvh,444px);min-height:0;margin:0;padding:0;flex-shrink:0;align-items:start}
+.home-cell{min-width:0;align-self:start}.home-cell .app{width:100%;font-size:12px;letter-spacing:-.3px}.home .app-icon{width:60px;height:60px;border-radius:16px;margin-bottom:6px}.home .app-icon svg{width:36px;height:36px}.home .talk svg{width:44px;height:44px}.home .app-label{line-height:1.3;white-space:nowrap;letter-spacing:-.4px;font-size:11px}
+.weather-tile{grid-area:1/1/3/3}.cell-talk{grid-area:1/3}.cell-photos{grid-area:1/4}.cell-notes{grid-area:2/3}.cell-calendar{grid-area:2/4}.cell-clock{grid-area:3/1}.cell-settings{grid-area:3/2}.cell-progress{grid-area:4/1}.cell-lock{grid-area:4/2}.photo-tile{grid-area:3/3/5/5}
+.home-widget{border-radius:27px;position:relative;overflow:hidden;width:100%;height:calc(100% - 21px);min-height:0;align-self:stretch;text-align:left;box-shadow:0 3px 8px #0001}.weather-tile{background:linear-gradient(145deg,#192538ed,#273953df);color:#fff;padding:15px 16px;display:flex;flex-direction:column;justify-content:center;gap:3px}.weather-tile strong{font-size:15px;font-weight:500}.widget-degrees{font-size:45px;font-weight:300;line-height:1.1;letter-spacing:-2px}.weather-tile>svg{width:23px;height:23px;margin:3px 0}.weather-tile>span:not(.widget-degrees){font-size:12px}.weather-tile small{font-size:9px;opacity:.55;white-space:nowrap}.photo-tile{background:#758b9b;padding:0;overflow:visible;border-radius:27px}.photo-tile-image{display:block;position:absolute;inset:0;border-radius:27px;background-image:var(--home-photo);background-size:cover;background-position:50% 60%;box-shadow:inset 0 0 0 1px #ffffff44}.photo-tile-label{position:absolute;left:0;right:0;bottom:-21px;text-align:center;font-size:11px;color:#fff;text-shadow:0 1px 4px #0009}.clock.app-icon{margin-top:0;background:#fff;color:#16191e;letter-spacing:normal}.clock.app-icon svg{width:50px;height:50px}.home .calendar svg{width:37px;height:37px}.home .desktop-spacer{min-height:16px;flex:1}.home-search{display:flex;align-items:center;justify-content:center;gap:4px;align-self:center;background:#e3e9ee2b;color:#fff;border:1px solid #ffffff24;border-radius:20px;padding:6px 12px;font-size:11px;margin:0 0 18px;backdrop-filter:blur(20px)}.home-search svg{width:12px;height:12px}.dock{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border-radius:31px;padding:12px 10px;margin:0 -8px 0;background:#e3e9ef40;border:1px solid #ffffff44;flex-shrink:0}.dock .app-icon{width:58px;height:58px;margin:0 auto}.dock .app{min-height:58px}.dock .app-label{display:none}
+.launcher-search{position:absolute;z-index:15;inset:14px 17px 105px;border-radius:25px;background:#203049eb;color:#fff;backdrop-filter:blur(30px);padding:16px;overflow:auto;box-shadow:0 7px 30px #0003}.launcher-search[hidden]{display:none}.launcher-search input{width:100%;padding:11px 14px;border:1px solid #ffffff33;border-radius:17px;color:#fff;background:#ffffff18;outline:0;font:inherit;font-size:14px}.launcher-search input::placeholder{color:#c4cbd4}.launcher-results{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:16px}.launcher-results button{display:flex;align-items:center;gap:8px;text-align:left;padding:13px 8px;background:#ffffff13;border-radius:13px;color:#fff;font-size:12px}.launcher-results svg{height:22px;width:22px;flex-shrink:0}.no-apps{font-size:13px;color:#bac6d3}
+.lock{padding:18px 22px 0;height:100%;min-height:0;overflow:hidden;display:flex;flex-direction:column}.lock-clock{flex-shrink:0}.lock .date{font-size:19px;font-weight:600;margin:7px 0 0;letter-spacing:0;color:#eef3fb}.lock .clock{font-size:clamp(82px,26vw,110px);font-weight:650;letter-spacing:-5px;margin:0;line-height:1.1;color:#e9f1fb;text-shadow:0 1px 12px #fff2}.lock-space{flex:1;min-height:20px}.lock-notifications{flex-shrink:0;margin-bottom:24px}.lock .notification{background:#dde7f07a;border-radius:23px;padding:12px 15px;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border:1px solid #ffffff66;margin:0 0 8px;box-shadow:inset 0 1px 0 #ffffff22}.lock .notification .meta{margin-bottom:5px}.lock-shortcuts{display:flex;justify-content:space-between;align-items:center;padding:0 17px;flex-shrink:0}.lock-shortcut{width:53px;height:53px;border-radius:50%;background:#dbe6ee40;color:#fff;border:1px solid #ffffff66;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);display:grid;place-items:center;box-shadow:inset 0 1px 0 #ffffff66}.lock-shortcut svg{width:24px;height:24px}.lock .unlock{padding:17px 0 0;margin:0;background:transparent;font-size:10px;min-height:31px;line-height:1.4;opacity:.85;flex-shrink:0}.phone[data-mode="lock"] .status #status-time{font-size:13px;font-weight:550}.phone[data-mode="lock"] .bottom{height:calc(28px + var(--safe-bottom))}
+.notes-top{padding:10px 16px 17px;min-height:76px}.notes-top .glass-button{width:44px;height:44px}.notes-top>div{font-size:16px}.notes-scroll{padding:0 16px 22px;scrollbar-width:none}.note-section{margin:0 0 28px}.note-section[hidden]{display:none}.note-section h2{font-size:24px;font-weight:700;margin:9px 0 14px;letter-spacing:-.6px}.notes-group{border-radius:25px}.note-row{padding:14px 21px 13px;min-height:94px}.note-row strong{font-size:16px;font-weight:650;letter-spacing:-.3px}.note-summary{display:flex;flex-direction:column;gap:3px;margin-top:4px;min-width:0}.note-date{font-size:12px;color:#949499;margin:0;line-height:1.35;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.note-preview{font-size:13px;line-height:1.4;color:#929297;margin:0}.note-folder{display:flex;align-items:center;gap:4px;color:#96969c;font-size:12px;margin-top:4px}.note-folder svg{width:15px;height:15px}.note-row+.note-row:before{left:21px}.notes-search{margin:0 17px 6px;padding:13px 15px;min-height:49px;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px)}.notes-search input{font-size:17px}.ios-note .notes-top{padding-bottom:13px}.note-mode{color:#9b9ba1;font-size:11px}.ios-note .note-paper{padding:2px 25px 30px}.note-paper h3{font-size:27px;font-weight:650;line-height:1.45;margin:0 0 18px;letter-spacing:-.7px}.note-paper .timestamp{font-size:11px;line-height:1.5;margin:0 0 18px;color:#99999f}.note-paper .prose{font-size:16px;line-height:1.85;color:#29292d;white-space:pre-wrap}.note-bottom{margin:8px 22px;gap:20px;padding:12px 18px;color:#a0a0a5}.note-bottom>span{display:flex;align-items:center}.note-bottom svg{width:22px;height:22px;color:#1b1b1f}.checklist-line{display:inline-flex;align-items:baseline;gap:10px;width:100%;vertical-align:top;white-space:pre-wrap}.note-checkbox{font-size:0;display:inline-block;border:1.5px solid #d5aa23;border-radius:50%;width:19px;height:19px;flex-shrink:0;position:relative;top:3px}.checklist-line>span:last-child{min-width:0}
+.chat-list-page .avatar{width:51px;height:51px;border-radius:36%}.message .avatar,.avatar-slot{width:36px;min-width:36px;height:36px}.message .avatar{border-radius:36%;font-size:12px}.message .avatar img{image-rendering:auto}.avatar-fallback{z-index:0}.avatar img{z-index:1}.message{gap:7px;margin-left:10px;margin-right:11px}.sender-name{font-size:11px;color:#384e5d}.bubble{font-size:14px;line-height:1.55;padding:8px 11px}.message-content{max-width:calc(100% - 66px)}.chat .header{min-height:52px}.chat .header h2{font-weight:550}.chat-notice{font-size:10px;padding-bottom:8px}.readonly-composer .avatar{width:28px;height:28px;border-radius:36%}.readonly-composer{gap:9px}.build-version{text-align:center;color:#8f98a3;font-size:11px;padding:28px 15px;letter-spacing:.3px}.clock-page{text-align:center}.clock-page .clock-face svg{width:180px;height:180px}.flashlight-screen{height:100%;background:#fff}.phone[data-mode="flashlight"]{background:#fff}
+@media(min-width:701px){.lock .clock{font-size:105px}}
+@media(max-width:350px){.home{padding:13px 17px 0}.home-grid.appgrid{gap:11px 10px;height:clamp(304px,54dvh,400px);grid-template-rows:repeat(4,minmax(63px,1fr))}.home .app-icon{width:51px;height:51px;border-radius:14px}.home .app-label{font-size:10px}.home .app-icon svg{height:31px;width:31px}.home .clock.app-icon svg{width:43px;height:43px}.home .talk svg{width:40px;height:40px}.home-widget{border-radius:23px}.weather-tile{padding:10px 13px}.weather-tile strong{font-size:13px}.widget-degrees{font-size:35px}.weather-tile>span:not(.widget-degrees){font-size:11px}.weather-tile small{font-size:8px}.weather-tile>svg{height:18px;width:18px}.photo-tile-image{border-radius:23px}.dock{padding:10px 9px;border-radius:27px;gap:7px}.dock .app-icon{width:50px;height:50px}.dock .app{min-height:50px}.home-search{margin-bottom:12px}.lock{padding-top:9px}.lock .date{font-size:17px}.lock .clock{font-size:82px}.lock-notifications{margin-bottom:14px}.lock-shortcut{height:45px;width:45px}.lock .unlock{padding-top:11px;min-height:24px}.note-section h2{font-size:23px}.note-row{padding-left:17px;padding-right:17px}.notes-scroll{padding-left:13px;padding-right:13px}.note-paper .prose{font-size:15px}.ios-note .note-paper{padding-left:20px;padding-right:20px}}
+@media(max-height:650px){.home{padding-top:8px}.home-grid.appgrid{height:310px;gap:10px 12px;grid-template-rows:repeat(4,minmax(60px,1fr))}.home .desktop-spacer{min-height:6px}.home-search{padding:4px 10px;margin-bottom:9px}.dock{padding-top:9px;padding-bottom:9px}.lock-notifications{margin-bottom:10px}.lock-shortcuts{padding-left:10px;padding-right:10px}.lock .notification{padding:10px 12px}.lock-space{min-height:10px}}
+.calendar-art{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;gap:2px}.calendar-art small{color:#e55758;font-size:10px;letter-spacing:0}.calendar-art b{font-size:36px;font-weight:350;color:#171a1f;letter-spacing:-1px}.clock.app-icon svg{padding:3px}@media(max-width:350px){.calendar-art b{font-size:30px}.calendar-art small{font-size:9px}}
+.checklist-line{align-items:flex-start}.note-checkbox{top:5px;line-height:0}
 </style>
 </head>
 <body>
@@ -4319,6 +4464,11 @@ const time=t=>t.slice(11,16), date=t=>t.slice(0,10);
 const unread=chat=>chat.messages.filter(m=>m.unread&&!state.readMessages.includes(m.id)).length;
 const totalUnread=()=>CONFIG.chats.reduce((n,c)=>n+unread(c),0);
 const glyphs={
+ flashlight:'<path d="M8 3h8v4l-2 4v10h-4V11L8 7ZM8 7h8M11 13h2"/>',
+ clock:'<circle cx="12" cy="12" r="10"/><path d="M12 5v7l5 3M12 2v1M22 12h-1M12 22v-1M2 12h1"/>',
+ folder:'<path d="M3 6h6l2 2h10v12H3ZM3 6V4h6l2 2h10v2"/>',
+ checklist:'<circle cx="5" cy="6" r="3"/><circle cx="5" cy="17" r="3"/><path d="m3 6 1.5 1.5L7 4M11 6h11M11 17h11"/>',
+ paperclip:'<path d="m9 15 7-7a3 3 0 0 0-4-4l-8 8a5 5 0 0 0 7 7l9-9M7 14l7-7"/>',
  talk:'<path d="M12 3C5.9 3 1.4 6.5 1.4 10.9c0 3 2.1 5.5 5.4 6.8l-1 3.5 4.2-2.6c.7.1 1.4.2 2 .2 6 0 10.6-3.5 10.6-7.9S18 3 12 3Z" fill="currentColor" stroke="none"/><text x="12" y="12.7" text-anchor="middle" fill="#fee500" stroke="none" font-size="5.2" font-family="Arial,sans-serif" font-weight="800">TALK</text>',
  photo:'<g stroke="none"><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#e6b749"/><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#e47c63" transform="rotate(45 12 12)"/><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#d7789f" transform="rotate(90 12 12)"/><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#a59bce" transform="rotate(135 12 12)"/><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#7fa6cf" transform="rotate(180 12 12)"/><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#80b9ad" transform="rotate(225 12 12)"/><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#97bf82" transform="rotate(270 12 12)"/><ellipse cx="12" cy="7" rx="2.3" ry="4.4" fill="#d0c86e" transform="rotate(315 12 12)"/></g>',
  note:'<path d="M5 10h14M5 14h14M5 18h9"/>',
@@ -4341,29 +4491,29 @@ const glyphs={
 const svg=type=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${glyphs[type]||glyphs.info}</svg>`;
 function avatar(c){
  const id=c.id||'self',src=CONFIG.assets.avatars[id]||'',position=CONFIG.assets.avatarPositions[id]||'50% 50%',zoom=Math.max(1,Math.min(4,Number(CONFIG.assets.avatarZoom?.[id])||1)),origin=CONFIG.assets.avatarOrigins?.[id]||'50% 50%';
- return `<span class="avatar" style="background:${/^#[\da-f]{3,8}$/i.test(c.color)?c.color:'#879cb2'}"><span class="avatar-fallback">${esc(c.initials)}</span>${src?`<img src="${esc(src)}" alt="${esc(c.name)}的头像" style="object-position:${esc(position)};transform:scale(${zoom});transform-origin:${esc(origin)}" loading="lazy">`:''}</span>`;
+ return `<span class="avatar" style="background:${/^#[\da-f]{3,8}$/i.test(c.color)?c.color:'#879cb2'}"><span class="avatar-fallback">${esc(c.initials)}</span>${src?`<img src="${esc(src)}" alt="${esc(c.name)}的头像" style="object-position:${esc(position)};transform:scale(${zoom});transform-origin:${esc(origin)}" decoding="async">`:''}</span>`;
 }
 document.addEventListener('error',e=>{if(e.target instanceof HTMLImageElement&&e.target.closest('.avatar'))e.target.hidden=true},true);
 const selfContact=()=>({...CONFIG.owner,id:'self',color:'#a2a1b5'});
 function header(title,sub='',tools=''){return `<header class="header"><button class="back" data-action="back" aria-label="返回">${svg('back')}</button><h2>${esc(title)}</h2>${sub?`<small>${esc(sub)}</small>`:''}${tools}</header>`}
 function statusIcons(){
  const level=Math.max(0,Math.min(100,parseInt(CONFIG.device.battery)||0));
- return `<svg viewBox="0 0 20 15" fill="currentColor"><rect x="1" y="10" width="3" height="4" rx=".7"/><rect x="6" y="7" width="3" height="7" rx=".7"/><rect x="11" y="4" width="3" height="10" rx=".7"/><rect x="16" y="1" width="3" height="13" rx=".7"/></svg><svg viewBox="0 0 20 15" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M1 5a14 14 0 0 1 18 0M4 8a9 9 0 0 1 12 0M7 11a4.4 4.4 0 0 1 6 0"/><circle cx="10" cy="14" r="1" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 30 15" fill="none"><rect x=".7" y="1" width="25" height="13" rx="3" stroke="currentColor" stroke-opacity=".6"/><path d="M28 5v5" stroke="currentColor" stroke-width="2"/><rect x="2.5" y="2.8" width="${21.4*level/100}" height="9.4" rx="1.5" fill="currentColor"/></svg>`;
+ return `<svg viewBox="0 0 20 15" fill="currentColor"><rect x="1" y="10" width="3" height="4" rx=".7"/><rect x="6" y="7" width="3" height="7" rx=".7"/><rect x="11" y="4" width="3" height="10" rx=".7"/><rect x="16" y="1" width="3" height="13" rx=".7"/></svg><svg viewBox="0 0 20 15" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M1 5a14 14 0 0 1 18 0M4 8a9 9 0 0 1 12 0M7 11a4.4 4.4 0 0 1 6 0"/><circle cx="10" cy="14" r="1" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 30 15" fill="none"><rect x=".7" y="1" width="25" height="13" rx="3" stroke="currentColor" stroke-opacity=".6"/><path d="M28 5v5" stroke="currentColor" stroke-width="2"/><rect x="2.5" y="2.8" width="${21.4*level/100}" height="9.4" rx="1.5" fill="currentColor"/><text x="13" y="11.1" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="var(--battery-number,#fff)">${level}</text></svg>`;
 }
 let wallpaperKey='';
 function applyWallpaper(){
  const lock=route.type==='lock',src=(lock?CONFIG.assets.lockWallpaper:CONFIG.assets.wallpaper)||'',pos=(lock?CONFIG.assets.lockWallpaperPosition:CONFIG.assets.wallpaperPosition)||'50% 50%',key=src+'|'+pos,layer=$('#wallpaper');
  layer.style.backgroundPosition=pos;
- if(key===wallpaperKey)return;wallpaperKey=key;layer.style.backgroundImage='none';
+ $('#phone').style.setProperty('--home-photo',src?'url('+JSON.stringify(src)+')':'none');if(key===wallpaperKey)return;wallpaperKey=key;layer.style.backgroundImage='none';
  if(src){const probe=new Image();probe.onload=()=>{if(wallpaperKey===key)layer.style.backgroundImage=`url(${JSON.stringify(src)})`};probe.onerror=()=>{if(wallpaperKey===key)layer.style.backgroundImage='none'};probe.src=src;}
 }
-function appButton(id,name,type,className='',badge=0){return `<button class="app" ${id==='lock'?'data-action="lock"':`data-open="${esc(id)}"`} aria-label="${esc(name)}"><span class="app-icon ${className||type}">${svg(type)}${badge?`<span class="badge">${badge}</span>`:''}</span><span class="app-label">${esc(name)}</span></button>`}
+function appButton(id,name,type,className='',badge=0){return `<button class="app" ${id==='lock'?'data-action="lock"':`data-open="${esc(id)}"`} aria-label="${esc(name)}"><span class="app-icon ${className||type}">${type==='calendar'?`<span class="calendar-art"><small>${esc(CONFIG.interface.calendar.month)}</small><b>${esc(CONFIG.interface.calendar.day)}</b></span>`:type==='clock'?clockWidget():svg(type)}${badge?`<span class="badge">${badge}</span>`:''}</span><span class="app-label">${esc(name)}</span></button>`}
 function clockWidget(){
  const [h,m]=CONFIG.device.time.split(':').map(Number),marks=Array.from({length:12},(_,i)=>`<path d="M50 7v5" transform="rotate(${i*30} 50 50)" stroke="currentColor" stroke-width="${i%3?1:2}" opacity="${i%3?.4:.8}"/>`).join('');
  return `<svg viewBox="0 0 100 100" aria-hidden="true">${marks}<path d="M50 50V28" transform="rotate(${(h%12)*30+m/2} 50 50)" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M50 50V17" transform="rotate(${m*6} 50 50)" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="50" r="3" fill="#d7a66e"/></svg>`;
 }
 function filterChatRows(){const kind=document.querySelector('.chat-filters .selected')?.dataset.chatKind||'all',q=document.querySelector('#chat-filter')?.value.trim().toLowerCase()||'';document.querySelectorAll('.chat-list-scroll .row').forEach(row=>{const program=row.classList.contains('program-row');row.hidden=(kind==='private'&&program)||(kind==='program'&&!program)||!row.dataset.search.includes(q)})}
-function chatScroller(){return $('#view .chat-scroll')||$('#view .chat-list-scroll')||$('#view')}
+function chatScroller(){return $('#view .chat-scroll')||$('#view .chat-list-scroll')||$('#view .notes-scroll')||$('#view .note-paper')||$('#view')}
 
 function toast(text){$('#toast').textContent=text;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,2400)}
 function discover(ids=[]){let found=false;ids.forEach(id=>{if(CONFIG.clues.some(c=>c.id===id)&&!state.clues.includes(id)){add('clues',id);found=true}});if(found)toast('发现线索 · 已保存到探索进度')}
@@ -4371,14 +4521,17 @@ function open(type,id,messageId){history.push({...route,scroll:chatScroller().sc
 function unlock(){state.unlocked=true;save();history=[];route={type:'home'};render()}
 function back(){route=history.pop()||{type:'home'};render();chatScroller().scrollTop=route.scroll||0}
 function notification(n){return `<button class="notification" data-action="notification" data-id="${esc(n.id)}"><span class="meta"><span>${esc(n.app)}${n.statusLabel?' · '+esc(n.statusLabel):''}${state.readNotifications.includes(n.id)?' · 已查看':''}</span><span>${esc(n.time)}</span></span><strong>${esc(n.title)}</strong><p>${esc(n.text)}</p></button>`}
+function noteBody(body){return body.split('\n').map(line=>line.startsWith('□ ')?`<span class="checklist-line"><span class="note-checkbox" aria-hidden="true">□</span><span>${esc(line.slice(1))}</span></span>`:esc(line)).join('\n')}
+function filterNotes(){const q=$('#note-filter').value.trim().toLowerCase();document.querySelectorAll('.note-row').forEach(row=>row.hidden=!row.dataset.search.includes(q));document.querySelectorAll('.note-section').forEach(group=>group.hidden=![...group.querySelectorAll('.note-row')].some(row=>!row.hidden))}
+function launcherResults(){const q=$('#app-filter')?.value.trim().toLowerCase()||'',items=[...CONFIG.apps,...CONFIG.interface.launcherExtras,{id:'notifications',name:'通知',icon:'bell'},{id:'lock',name:'锁屏',icon:'lock'}];$('.launcher-results').innerHTML=items.filter(a=>a.name.toLowerCase().includes(q)).map(a=>`<button ${a.id==='lock'?'data-action="lock"':`data-open="${esc(a.id)}"`}>${svg(a.icon)}<span>${esc(a.name)}</span></button>`).join('')||'<span class="no-apps">没有匹配的 App</span>'}
 function cluesHTML(ids=[]){return ids.filter(id=>state.clues.includes(id)).map(id=>{const c=CONFIG.clues.find(c=>c.id===id);return c?`<div class="clue"><strong>已记录 · ${esc(c.title)}</strong>${esc(c.description)}</div>`:''}).join('')}
 function render(){
-const v=$('#view'),t=route.type;$('#phone').classList.toggle('wall',['lock','home'].includes(t));$('#status-time').textContent=CONFIG.device.time;$('#status-right').innerHTML=statusIcons();$('#status-right').setAttribute('aria-label',`信号、Wi-Fi、电量 ${CONFIG.device.battery}`);v.dataset.page=t;$('#phone').dataset.mode=t==='chat'?(CONFIG.chats.find(c=>c.id===route.id)?.kind==='program'?'program':'chat'):t;applyWallpaper();
+const v=$('#view'),t=route.type;$('#phone').classList.toggle('wall',['lock','home'].includes(t));$('#status-time').textContent=t==='lock'?CONFIG.device.carrier:CONFIG.device.time;$('#status-right').innerHTML=statusIcons();$('#status-right').setAttribute('aria-label',`信号、Wi-Fi、电量 ${CONFIG.device.battery}`);v.dataset.page=t;$('#phone').dataset.mode=t==='chat'?(CONFIG.chats.find(c=>c.id===route.id)?.kind==='program'?'program':'chat'):t;applyWallpaper();
 let html='';
-if(t==='lock')html=`<div class="lock"><div class="lock-label">${svg('lock')}</div><div class="date">${esc(CONFIG.device.date)}</div><div class="clock">${esc(CONFIG.device.time)}</div><div class="lock-owner"></div>${CONFIG.notifications.slice(0,2).map(notification).join('')}<button class="unlock" data-action="unlock"><b>⌃</b>向上轻扫以打开</button></div>`;
+if(t==='lock')html=`<div class="lock"><div class="lock-clock"><div class="date">${esc(CONFIG.interface.lockDate)}</div><div class="clock">${esc(CONFIG.device.time)}</div></div><div class="lock-space"></div><div class="lock-notifications">${CONFIG.notifications.slice(0,2).map(notification).join('')}</div><div class="lock-shortcuts"><button class="lock-shortcut" data-open="flashlight" aria-label="打开屏幕手电筒">${svg('flashlight')}</button><button class="lock-shortcut" data-open="camera" aria-label="打开相机">${svg('camera')}</button></div><button class="unlock" data-action="unlock">向上轻扫以打开</button></div>`;
 else if(t==='home'){
- const ui=CONFIG.interface,extras=ui.launcherExtras;
- html=`<div class="home"><div class="widgets"><button class="sys-widget" data-open="calendar" aria-label="打开日历"><span class="month">${esc(ui.calendar.month)}</span><span class="day-number">${esc(ui.calendar.day)}</span><span class="widget-caption">${esc(ui.calendar.year)}</span></button><div class="sys-widget clock-widget" aria-label="${esc(CONFIG.device.time)}">${clockWidget()}<span class="widget-caption" style="color:#cad5e3">${esc(CONFIG.device.carrier)}</span></div></div><div class="appgrid">${CONFIG.apps.filter(a=>a.id!=='calls').map(a=>appButton(a.id,a.name,a.icon,a.icon,a.id==='chats'?totalUnread():0)).join('')}${extras.map(a=>appButton(a.id,a.name,a.icon,a.className)).join('')}</div><div class="desktop-spacer"></div><div class="page-dots" aria-hidden="true"><i></i><i></i></div><div class="dock">${appButton('calls','最近通话','call')}${appButton('notifications','通知','bell','notifications-icon',CONFIG.notifications.filter(n=>!state.readNotifications.includes(n.id)).length)}${appButton('lock','锁屏','lock','lock-icon')}</div></div>`;
+ const ui=CONFIG.interface,weather=ui.weatherWidget;
+ html=`<div class="home"><div class="home-grid appgrid"><button class="home-widget weather-tile" data-open="weather" aria-label="打开天气"><strong>${esc(weather.location)}</strong><span class="widget-degrees">${esc(weather.temperature)}</span>${svg('weather')}<span>${esc(weather.summary)}</span><small>${esc(weather.detail)}</small></button><div class="home-cell cell-talk">${appButton('chats','KakaoTalk','talk','talk',totalUnread())}</div><div class="home-cell cell-photos">${appButton('photos','相册','photo')}</div><div class="home-cell cell-notes">${appButton('notes','备忘录','note')}</div><div class="home-cell cell-calendar">${appButton('calendar','日历','calendar')}</div><div class="home-cell cell-clock">${appButton('clock','时钟','clock')}</div><div class="home-cell cell-settings">${appButton('settings','设置','settings')}</div><button class="home-widget photo-tile" data-open="photos" aria-label="打开相册小组件"><span class="photo-tile-image"></span><span class="photo-tile-label">${esc(ui.photoWidgetLabel)}</span></button><div class="home-cell cell-progress">${appButton('progress','探索记录','progress','progress-icon')}</div><div class="home-cell cell-lock">${appButton('lock','锁屏','lock','lock-icon')}</div></div><div class="desktop-spacer"></div><button class="home-search" data-action="search-home">${svg('search')} ${esc(ui.homeSearch)}</button><div class="launcher-search" hidden><input id="app-filter" type="search" placeholder="搜索 App" aria-label="搜索 App"><div class="launcher-results"></div></div><div class="dock">${appButton('calls','最近通话','call')}${appButton('chats','KakaoTalk','talk','talk',totalUnread())}${appButton('notifications','通知','bell','notifications-icon',CONFIG.notifications.filter(n=>!state.readNotifications.includes(n.id)).length)}${appButton('camera','相机','camera')}</div></div>`;
 }
 else if(t==='chats'){
  html=`<div class="chat-list-page">${header('KakaoTalk','',`<button class="icon-button" data-action="search-chats" aria-label="查找聊天">${svg('search')}</button><button class="icon-button" data-open="profile" data-id="self" aria-label="我的资料">${svg('person')}</button>`)}<div class="chat-filters"><button class="selected" data-chat-kind="all">全部</button><button data-chat-kind="private">聊天记录</button><button data-chat-kind="program">节目短信</button></div><div class="chat-search" hidden><input id="chat-filter" type="search" aria-label="查找联系人或最后消息" placeholder="查找聊天" autocomplete="off"></div><div class="chat-list-scroll">`+chatList().map(c=>{
@@ -4405,18 +4558,23 @@ else if(t==='profile'){
  html=header(route.id==='self'?'我的资料':'对话信息')+`<div class="profile">${avatar(who)}<h3>${esc(who.name)}</h3><p>${esc(route.id==='self'?'本机使用者':c?.kind==='program'?'节目通知与匿名传达 · 每晚一条心动短信':c?.notice||who.subtitle||'联系人')}</p>${c?`<button class="row" data-open="chat" data-id="${esc(c.id)}"><span class="row-main"><strong>查看对话</strong></span>›</button>`:''}</div>`;
 }
 else if(t==='settings'){
- html=header('设置')+`<button class="row" data-open="profile" data-id="self">${avatar(selfContact())}<span class="row-main"><strong>${esc(CONFIG.owner.name)}</strong><div class="preview">我的资料</div></span>›</button><button class="row" data-open="progress"><span class="row-main"><strong>探索进度</strong><div class="preview">${state.visited.length} 项已查看 · ${state.clues.length} 条线索</div></span>›</button><button class="row" data-open="notifications"><span class="row-main"><strong>通知</strong></span>›</button><button class="row" data-action="lock"><span class="row-main"><strong>锁定屏幕</strong></span>›</button>`;
+ html=header('设置')+`<button class="row" data-open="profile" data-id="self">${avatar(selfContact())}<span class="row-main"><strong>${esc(CONFIG.owner.name)}</strong><div class="preview">我的资料</div></span>›</button><button class="row" data-open="progress"><span class="row-main"><strong>探索进度</strong><div class="preview">${state.visited.length} 项已查看 · ${state.clues.length} 条线索</div></span>›</button><button class="row" data-open="notifications"><span class="row-main"><strong>通知</strong></span>›</button><button class="row" data-action="lock"><span class="row-main"><strong>锁定屏幕</strong></span>›</button><div class="build-version">界面版本 ${esc(CONFIG.interface.release)}</div>`;
 }
 else if(t==='calendar'){
  html=header('日历')+`<div class="utility"><h3>${esc(CONFIG.interface.calendar.year)} · ${esc(CONFIG.interface.calendar.month)}</h3><div class="calendar-grid">${Array.from({length:30},(_,i)=>`<span class="${i+1===Number(CONFIG.interface.calendar.day)?'current':''}">${i+1}</span>`).join('')}</div></div>`;
 }
+else if(t==='clock'){html=header('时钟')+`<div class="utility clock-page"><div class="clock-face">${clockWidget()}</div><h3>${esc(CONFIG.device.time)}</h3><p>${esc(CONFIG.device.date)}</p></div>`}
+else if(t==='flashlight'){html=header('屏幕手电筒')+'<div class="flashlight-screen" aria-label="白色屏幕照明"></div>'}
 else if(t==='camera'||t==='weather'){
  const item=CONFIG.interface.placeholders[t];html=header(item.title)+`<div class="utility"><h3>${esc(item.title)}</h3><p>${esc(item.text)}</p></div>`;
 }
 else if(t==='photos')html=header('相册',`${CONFIG.photos.length} 张`)+`<div class="section-label">MOMENTS / 片刻</div><div class="gallery">`+recent(CONFIG.photos).map(p=>`<button class="photo-card" data-open="photo" data-id="${esc(p.id)}"><span class="art ${p.palette==='night'?'night':''}">${esc(p.title)}</span><strong>${esc(p.title)}</strong><small>${esc(p.date)}</small></button>`).join('')+'</div>';
 else if(t==='photo'){const p=CONFIG.photos.find(x=>x.id===route.id);if(p)html=header(p.title)+`<div class="photo-detail"><div class="art ${p.palette==='night'?'night':''}" role="img" aria-label="${esc(p.description)}">${esc(p.title)}</div><div class="timestamp">${esc(p.date)} · 文字照片</div><div class="prose">${esc(p.description)}</div>${cluesHTML(p.clueIds)}</div>`}
-else if(t==='notes')html=`<section class="ios-notes"><div class="notes-top"><button class="glass-button back" data-action="back" aria-label="返回">${svg('back')}</button><div><strong>全部备忘录</strong><small>本机 · ${CONFIG.notes.length} 篇</small></div><button class="glass-button" data-open="progress" aria-label="查看探索进度">${svg('menu')}</button></div><div class="notes-scroll"><h2>备忘录</h2><div class="notes-group">`+CONFIG.notes.map(n=>`<button class="note-row" data-open="note" data-id="${esc(n.id)}" data-search="${esc((n.title+' '+n.body).toLowerCase())}"><strong>${esc(n.title)}</strong><div class="note-preview">${esc(n.body.replace(/\n/g,' ').slice(0,32))}</div><div class="note-date">${esc(n.date)}</div></button>`).join('')+`</div></div><div class="notes-search"><span>${svg('search')}</span><input id="note-filter" type="search" placeholder="搜索" aria-label="搜索备忘录"><span class="read-only-tag">只读</span></div></section>`;
-else if(t==='note'){const n=CONFIG.notes.find(x=>x.id===route.id);if(n)html=`<section class="ios-note"><div class="notes-top"><button class="glass-button back" data-action="back" aria-label="返回">${svg('back')}</button><span class="note-mode">只读备忘录</span><button class="glass-button" data-open="progress" aria-label="查看已发现的线索">${svg('menu')}</button></div><article class="note-paper"><div class="timestamp">${esc(n.date)}</div><h3>${esc(n.title)}</h3><div class="prose">${esc(n.body)}</div></article><div class="note-bottom"><span>${svg('note')}</span><span>仅查看 · 内容不可编辑</span></div></section>`}
+else if(t==='notes'){
+ const notes=[...CONFIG.notes].sort((a,b)=>b.timelineOrder-a.timelineOrder);
+ html=`<section class="ios-notes"><div class="notes-top"><button class="glass-button back" data-action="back" aria-label="返回">${svg('back')}</button><div><strong>全部备忘录</strong><small>本机 · ${notes.length} 篇</small></div><button class="glass-button" data-open="progress" aria-label="查看探索进度">${svg('menu')}</button></div><div class="notes-scroll">`+CONFIG.interface.noteGroups.map(group=>{const items=notes.filter(n=>n.group===group.id);return items.length?`<section class="note-section" data-note-group="${esc(group.id)}"><h2>${esc(group.title)}</h2><div class="notes-group">${items.map(n=>`<button class="note-row" data-open="note" data-id="${esc(n.id)}" data-search="${esc((n.title+' '+n.body).toLowerCase())}"><strong>${esc(n.title)}</strong><div class="note-summary"><span class="note-date">${esc(n.date)}</span><span class="note-preview">${esc(n.body.replace(/\n/g,' ').slice(0,32))}</span></div><div class="note-folder">${svg('folder')}备忘录</div></button>`).join('')}</div></section>`:''}).join('')+`</div><div class="notes-search"><span>${svg('search')}</span><input id="note-filter" type="search" placeholder="搜索" aria-label="搜索备忘录"><span class="read-only-tag">只读</span></div></section>`;
+}
+else if(t==='note'){const n=CONFIG.notes.find(x=>x.id===route.id);if(n)html=`<section class="ios-note"><div class="notes-top"><button class="glass-button back" data-action="back" aria-label="返回">${svg('back')}</button><span class="note-mode">备忘录</span><button class="glass-button" data-open="progress" aria-label="查看已发现的线索">${svg('menu')}</button></div><article class="note-paper"><div class="timestamp">${esc(n.date)}</div><h3>${esc(n.title)}</h3><div class="prose">${noteBody(n.body)}</div></article><div class="note-bottom"><span>${svg('checklist')}</span><span>${svg('paperclip')}</span><span>只读记录</span></div></section>`}
 else if(t==='calls')html=header('最近通话')+`<div class="section-label">RECENTS / 通话记录</div>`+recent(CONFIG.calls).map(c=>`<button class="row" data-open="call" data-id="${esc(c.id)}">${avatar(contact(c.contactId))}<span class="row-main"><strong class="${c.missed?'missed':''}">${esc(contact(c.contactId).name)}</strong><div class="preview">${esc(c.type)}</div></span><span class="row-end">${esc(c.time)}<br>ⓘ</span></button>`).join('');
 else if(t==='call'){const c=CONFIG.calls.find(x=>x.id===route.id);if(c)html=header('通话详情')+`<div class="call-detail">${avatar(contact(c.contactId)).replace('class="avatar"','class="avatar detail-avatar"')}<h3>${esc(contact(c.contactId).name)}</h3><div class="timestamp">${esc(c.time)}</div><p class="${c.missed?'missed':''}">${esc(c.type)}</p><div class="prose">${esc(c.detail)}</div><div class="readonly">仅查看历史记录，不会拨出电话</div>${cluesHTML(c.clueIds)}</div>`}
 else if(t==='notifications')html=header('通知中心')+`<div class="notice-list">${CONFIG.notifications.map(notification).join('')||'<div class="empty">暂无通知</div>'}</div>`;
@@ -4430,8 +4588,8 @@ if(t==='chat'){
 }
 
 }
-$('#phone').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.classList.contains('homebar')){if(route.type==='lock')unlock();else{history=[];route={type:'home'};render()}return}if(b.dataset.chatKind){const kind=b.dataset.chatKind;document.querySelectorAll('.chat-filters button').forEach(x=>x.classList.toggle('selected',x===b));filterChatRows();return}const a=b.dataset.action;if(a==='search-chats'){const box=$('.chat-search');box.hidden=!box.hidden;if(!box.hidden)$('#chat-filter').focus();else{$('#chat-filter').value='';filterChatRows()}return}else if(a==='chat-list-top'){const list=$('.chat-list-scroll');if(list)list.scrollTop=0;return}else if(a==='unlock')unlock();else if(a==='back')back();else if(a==='lock'){history=[];route={type:'lock'};render()}else if(a==='notification'){const n=CONFIG.notifications.find(x=>x.id===b.dataset.id);if(!n)return;add('readNotifications',n.id);if(route.type==='lock'){unlock()}open(n.target.type,n.target.id,n.target.messageId)}else if(a==='reset'){if(confirm('清除这部手机在当前浏览器中的已读状态、线索和探索进度？')){state=fresh();save();history=[];route={type:'lock'};render();toast('探索进度已重置')}}else if(b.dataset.open)open(b.dataset.open,b.dataset.id)});
-document.addEventListener('input',e=>{if(e.target.id==='note-filter'){const q=e.target.value.trim().toLowerCase();document.querySelectorAll('.note-row').forEach(row=>row.hidden=!row.dataset.search.includes(q))}if(e.target.id==='chat-filter'){filterChatRows()}});
+$('#phone').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.classList.contains('homebar')){if(route.type==='lock')unlock();else{history=[];route={type:'home'};render()}return}if(b.dataset.chatKind){const kind=b.dataset.chatKind;document.querySelectorAll('.chat-filters button').forEach(x=>x.classList.toggle('selected',x===b));filterChatRows();return}const a=b.dataset.action;if(a==='search-home'){const box=$('.launcher-search');box.hidden=!box.hidden;if(!box.hidden){launcherResults();$('#app-filter').focus()}return}if(a==='search-chats'){const box=$('.chat-search');box.hidden=!box.hidden;if(!box.hidden)$('#chat-filter').focus();else{$('#chat-filter').value='';filterChatRows()}return}else if(a==='chat-list-top'){const list=$('.chat-list-scroll');if(list)list.scrollTop=0;return}else if(a==='unlock')unlock();else if(a==='back')back();else if(a==='lock'){history=[];route={type:'lock'};render()}else if(a==='notification'){const n=CONFIG.notifications.find(x=>x.id===b.dataset.id);if(!n)return;add('readNotifications',n.id);if(route.type==='lock'){unlock()}open(n.target.type,n.target.id,n.target.messageId)}else if(a==='reset'){if(confirm('清除这部手机在当前浏览器中的已读状态、线索和探索进度？')){state=fresh();save();history=[];route={type:'lock'};render();toast('探索进度已重置')}}else if(b.dataset.open)open(b.dataset.open,b.dataset.id)});
+document.addEventListener('input',e=>{if(e.target.id==='note-filter')filterNotes();if(e.target.id==='app-filter')launcherResults();if(e.target.id==='chat-filter'){filterChatRows()}});
 let swipe=null;$('#view').addEventListener('pointerdown',e=>{if(route.type==='lock')swipe={x:e.clientX,y:e.clientY}});$('#view').addEventListener('pointerup',e=>{if(swipe&&route.type==='lock'&&swipe.y-e.clientY>65&&Math.abs(swipe.x-e.clientX)<100)unlock();swipe=null});$('#view').addEventListener('pointercancel',()=>swipe=null);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(route.type!=='lock')back()}if(e.key==='ArrowUp'&&route.type==='lock')unlock()});
 render();
